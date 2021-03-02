@@ -124,8 +124,6 @@ export class HomePage implements OnInit {
   rate = (r) => (this.rating = r);
 
   ngOnInit() {
-    this.jobService.getJobs().subscribe((data) => (this.myJobs = data.myJob));
-    this.jobService.getJobs().subscribe((data) => (this.myLeads = data.leads));
     this.getUserOne();
     this.getAllJobs();
     this.getAllSkills();

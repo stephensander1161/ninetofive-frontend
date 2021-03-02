@@ -1,4 +1,4 @@
-<ion-content *ngFor="let id of userId">
+<ion-content >
   <ion-grid id="header">
     <ion-row>
       <ion-col>
@@ -11,10 +11,10 @@
 
           <ion-title>Your Active Tasks </ion-title>
         </ion-item>
-        <form id="activeTasks" *ngFor="let job of myJobs">
+        <form id="activeTasks" >
           <ion-card color="tertiary">
             <ion-title class="providerAlertTitle">
-              {{job.providerId}} Is on the way!</ion-title
+              Fix Deck at 234 Cherry Oak Dr. </ion-title
             >
 
             <ion-grid>
@@ -24,7 +24,7 @@
                     <ion-label position="stacked" class="providerAlertHeaders"
                       >Type</ion-label
                     >
-                    {{job.type}}
+                    Carpentry
                   </ion-item>
                 </ion-col>
                 <ion-col>
@@ -32,15 +32,15 @@
                     <ion-label position="stacked" class="providerAlertHeaders"
                       >Estimate</ion-label
                     >
-                    {{job.estimate}}
+                    900$
                   </ion-item>
                 </ion-col>
                 <ion-col>
                   <ion-item class="providerAlertHeaders" color="tertiary">
                     <ion-label position="stacked" class="providerAlertHeaders"
-                      >Duration</ion-label
+                      >Time Remaining</ion-label
                     >
-                    {{job.duration}}
+                    3 Days
                   </ion-item>
                 </ion-col>
                 <ion-col>
@@ -48,7 +48,7 @@
                     <ion-label position="stacked" class="providerAlertHeaders"
                       >Description</ion-label
                     >
-                    {{job.description}}
+                    Don't forget to bring ladder.
                   </ion-item>
                 </ion-col>
                 <ion-col>
@@ -56,7 +56,7 @@
                     <ion-label position="stacked" class="providerAlertHeaders"
                       >Status</ion-label
                     >
-                    {{job.status}}
+                    Active
                   </ion-item>
                 </ion-col>
               </ion-row>
@@ -79,7 +79,7 @@
             <ion-col>
               <div *ngIf="provider">
                 <ion-title>Your Leads </ion-title>
-                <form *ngFor="let lead of myLeads" (ngSubmit)="acceptClicked()">
+                <form  >
                   <ion-card color="tertiary">
                     <ion-grid>
                       <ion-row>
@@ -93,7 +93,7 @@
                               class="providerAlertHeaders"
                               >Type</ion-label
                             >
-                            {{lead.type}}
+                            Carpentry
                           </ion-item>
                         </ion-col>
                         <ion-col>
@@ -106,7 +106,7 @@
                               class="providerAlertHeaders"
                               >Address</ion-label
                             >
-                            {{lead.address}}
+                            Braxton Ridge SW
                           </ion-item>
                         </ion-col>
                         <ion-col>
@@ -119,7 +119,7 @@
                               class="providerAlertHeaders"
                               >Estimate</ion-label
                             >
-                            {{lead.estimate}}
+                            400$
                           </ion-item>
                         </ion-col>
                         <ion-col>
@@ -132,7 +132,7 @@
                               class="providerAlertHeaders"
                               >Duration</ion-label
                             >
-                            {{lead.duration}}
+                            2 Days
                           </ion-item>
                         </ion-col>
                         <ion-col>
@@ -145,7 +145,7 @@
                               class="providerAlertHeaders"
                               >Description</ion-label
                             >
-                            {{lead.description}}
+                            Build Tree house
                           </ion-item>
                         </ion-col>
                         <ion-col> </ion-col>
@@ -169,7 +169,7 @@
   </ion-grid>
 
   <ion-grid id="navbar">
-    <ion-title id="title">Welcome Back {{id.firstName}}</ion-title>
+    <ion-title id="title">Welcome Back Sandra!</ion-title>
 
     <ion-row>
       <ion-col>
@@ -247,7 +247,7 @@
         #updateInfoForm="ngForm"
       >
         <ion-label color="success">First Name</ion-label>
-        <ion-title> {{id.firstName}}</ion-title>
+        <ion-title> Sandra</ion-title>
         <ion-item *ngIf="editInformation">
           <ion-label color="success" position="floating"
             >Edit First Name</ion-label
@@ -255,7 +255,7 @@
           <ion-input
             class="capitalize"
             appTitleCase
-            [(ngModel)]="userService.currentUser.firstName"
+            
             name="firstName"
             #firstName="ngModel"
             required
@@ -282,14 +282,13 @@
         </ion-item>
 
         <ion-label color="success">Last Name</ion-label>
-        <ion-title> {{id.lastName}}</ion-title>
+        <ion-title> Peters</ion-title>
         <ion-item *ngIf="editInformation">
           <ion-label color="success" position="floating"
             >Edit Last Name</ion-label
           >
           <ion-input
             class="capitalize"
-            [(ngModel)]="userService.currentUser.lastName"
             name="lastName"
             required
             minlength="2"
@@ -316,17 +315,23 @@
           </div>
         </ion-item>
         <ion-label color="success">Phone Number</ion-label>
-        <ion-title> {{id.phoneNumber}}</ion-title>
+        <ion-title> 555 555 5555</ion-title>
         <ion-item *ngIf="editInformation">
           <ion-label color="success" position="floating"
             >Edit Phone Number</ion-label
           >
           <ion-input
-            [(ngModel)]="userService.currentUser.phoneNumber"
+            class="capitalize"
             name="phoneNumber"
-            #phoneNumber="ngModel"
             required
+            minlength="2"
+            required
+            maxlength="15"
+            ngModel
             pattern="^((\\+91-?)|0)?[0-9]{10}$"
+            type="text"
+            #phoneNumber="ngModel"
+            
           ></ion-input>
           <div
             *ngIf=" phoneNumber.invalid && (updateInfoForm.submitted || phoneNumber.touched)"
@@ -341,14 +346,14 @@
           </div>
         </ion-item>
         <ion-label color="success">Email</ion-label>
-        <ion-title> {{id.email}}</ion-title>
+        <ion-title> sandra_peters1@gmail.com</ion-title>
         <ion-item *ngIf="editInformation">
           <ion-label color="success" position="floating">Edit Email</ion-label>
           <ion-input
-            [(ngModel)]="userService.currentUser.email"
             name="email"
             required
             email
+            ngModel
             #email="ngModel"
           ></ion-input>
           <div
@@ -366,10 +371,10 @@
           >
 
           <ion-input
-            [(ngModel)]="userService.currentUser.password"
             name="password"
             type="password"
             required
+            ngModel
             #password="ngModel"
             pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
           ></ion-input>
@@ -390,12 +395,11 @@
           >
 
           <ion-input
-            [(ngModel)]="userService.currentUser.confirmPassword"
+          ngModel
             type="password"
             name="confirmPassword"
             required
             #confirmPassword="ngModel"
-            pattern="{{ userService.currentUser.password }}"
           ></ion-input>
           <div
             *ngIf=" confirmPassword.invalid && (updateInfoForm.submitted || confirmPassword.touched)"
@@ -410,14 +414,14 @@
           </div>
         </ion-item>
         <ion-label color="success">City</ion-label>
-        <ion-title> {{id.city}}</ion-title>
+        <ion-title> Calgary</ion-title>
         <ion-item *ngIf="editInformation">
           <ion-label color="success" position="floating">Edit City</ion-label>
           <ion-input
             class="capitalize"
-            [(ngModel)]="userService.currentUser.city"
             name="city"
             #city="ngModel"
+            ngModel
             required
             minlength="3"
             maxlength="15"
@@ -432,15 +436,15 @@
           </div>
         </ion-item>
         <ion-label color="success">Address</ion-label>
-        <ion-title> {{id.address}}</ion-title>
+        <ion-title> 123 Ventner Ave</ion-title>
         <ion-item *ngIf="editInformation">
           <ion-label color="success" position="floating"
             >Edit Address</ion-label
           >
           <ion-input
-            [(ngModel)]="userService.currentUser.address"
             name="address"
             required
+            ngModel
             #address="ngModel"
             class="capitalize"
           ></ion-input>
@@ -452,16 +456,16 @@
           </div>
         </ion-item>
         <ion-label color="success">Postal Code</ion-label>
-        <ion-title> {{id.postalCode}}</ion-title>
+        <ion-title> T5R5F4</ion-title>
         <ion-item *ngIf="editInformation">
           <ion-label color="success" position="floating"
             >Edit Postal Code</ion-label
           >
           <ion-input
             oninput="this.value = this.value.toUpperCase()"
-            [(ngModel)]="userService.currentUser.postalCode"
             name="postalCode"
             required
+            ngModel
             #postalCode="ngModel"
             pattern="^[A-Za-z]\d[A-Za-z][ -]?\d[A-Za-z]\d$"
           ></ion-input>
@@ -478,15 +482,15 @@
 
         <div *ngIf="provider">
           <ion-label color="success">Biography</ion-label>
-          <ion-title> {{id.biography}}</ion-title>
+          <ion-title> Lorem Ipsum....</ion-title>
           <ion-item *ngIf="editInformation">
             <ion-label color="success" position="floating"
               >Edit Biography</ion-label
             >
             <ion-input
-              [(ngModel)]="userService.currentUser.biography"
               name="biography"
               required
+              ngModel
               #biography="ngModel"
             ></ion-input>
             <div
@@ -500,11 +504,10 @@
           </ion-item>
 
           <ion-label color="success">Primary Skill</ion-label>
-          <ion-title> {{id.primarySkill}}</ion-title>
+          <ion-title> Plumbing</ion-title>
           <ion-item *ngIf="editInformation">
             <ion-select
               placeholder="Select One"
-              [(ngModel)]="userService.currentUser.primarySkill"
               name="primarySkill"
             >
               <ion-select-option *ngFor="let _skill of skills"
@@ -519,11 +522,10 @@
           </ion-item>
 
           <ion-label color="success">Secondary Skill</ion-label>
-          <ion-title> {{id.secondarySkill}} </ion-title>
+          <ion-title> Carpentry </ion-title>
           <ion-item *ngIf="editInformation">
             <ion-select
               placeholder="Select One"
-              [(ngModel)]="userService.currentUser.secondarySkill"
               name="secondarySkill"
             >
               <ion-select-option *ngFor="let _skill of skills"
@@ -537,11 +539,10 @@
           </ion-item>
 
           <ion-label color="success">Tertiary Skill</ion-label>
-          <ion-title>{{id.tertiarySkill}}</ion-title>
+          <ion-title>Labour</ion-title>
           <ion-item *ngIf="editInformation">
             <ion-select
               placeholder="Select One"
-              [(ngModel)]="userService.currentUser.tertiarySkill"
               name="tertiarySkill"
             >
               <ion-select-option *ngFor="let _skill of skills"
@@ -555,10 +556,9 @@
           </ion-item>
 
           <ion-label color="success">Experience</ion-label>
-          <ion-title>{{id.experience}}</ion-title>
+          <ion-title>1-3</ion-title>
           <ion-item *ngIf="editInformation">
             <ion-select
-              [(ngModel)]="userService.currentUser.experience"
               name="experience"
               placeholder="Experience"
             >
@@ -568,7 +568,7 @@
             </ion-select>
           </ion-item>
         </div>
-        <ion-button (click)="editClicked(id)">Edit Your Info</ion-button>
+        <ion-button >Edit Your Info</ion-button>
         <ion-button
           [disabled]="!updateInfoForm.valid"
           *ngIf="editInformation"
