@@ -1,0 +1,7 @@
+{
+  "name": "ninetofive",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "angular"
+}

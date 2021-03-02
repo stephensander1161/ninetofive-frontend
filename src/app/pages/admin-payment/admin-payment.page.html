@@ -1,0 +1,440 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons>
+      <ion-button (click)="homeClicked()">Home</ion-button>
+      <ion-button (click)="statsClicked()">Stats</ion-button>
+      <ion-button (click)="usersClicked()">Users</ion-button>
+      <ion-button (click)="servicesClicked()">Services</ion-button>
+      <ion-button (click)="paymentClicked()">Payment Information</ion-button>
+      <ion-button (click)="templatesClicked()">Templates</ion-button>
+      <ion-button (click)="outreachClicked()">Outreach</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-title id="title">Payments Hub</ion-title>
+
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <ion-card>
+          <ion-card-header>Total Earnings</ion-card-header>
+
+          <ion-grid>
+            <ion-row>
+              <ion-col>
+                <ion-row>
+                  <ion-col>
+                    <ion-item>
+                      <ion-title> Today:</ion-title>
+                    </ion-item>
+                  </ion-col>
+                  <ion-col>
+                    <ion-item>
+                      <ion-title>300</ion-title>
+                    </ion-item>
+                  </ion-col>
+                </ion-row>
+                <ion-row>
+                  <ion-col>
+                    <ion-item>
+                      <ion-title> This Week:</ion-title>
+                    </ion-item>
+                  </ion-col>
+                  <ion-col>
+                    <ion-item>
+                      <ion-title>1500</ion-title>
+                    </ion-item>
+                  </ion-col>
+                </ion-row>
+                <ion-row>
+                  <ion-col>
+                    <ion-item>
+                      <ion-title> This Month:</ion-title>
+                    </ion-item>
+                  </ion-col>
+                  <ion-col>
+                    <ion-item>
+                      <ion-title>3400</ion-title>
+                    </ion-item>
+                  </ion-col>
+                </ion-row>
+                <ion-row>
+                  <ion-col>
+                    <ion-item>
+                      <ion-title>YTD</ion-title>
+                    </ion-item>
+                  </ion-col>
+                  <ion-col>
+                    <ion-item>
+                      <ion-title>17800</ion-title>
+                    </ion-item>
+                  </ion-col>
+                </ion-row>
+              </ion-col>
+              <ion-col>
+                <ion-card>
+                  <ion-grid>
+                    <ion-row>
+                      <canvas
+                        baseChart
+                        [datasets]="chartData"
+                        [labels]="chartLabels"
+                        [chartType]="chartType"
+                        [colors]="chartColors"
+                        [legend]="showLegend"
+                        [options]="chartOptions"
+                      >
+                      </canvas>
+                    </ion-row>
+                  </ion-grid>
+                </ion-card>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-card>
+          <ion-card-header>Earnings Reports</ion-card-header>
+          <ion-item>
+            <ion-label position="floating">Select Skill</ion-label>
+            <ion-select interface="popover">
+              <ion-select-option *ngFor="let _skill of allSkills"
+                >{{_skill.name}}</ion-select-option
+              >
+            </ion-select>
+          </ion-item>
+          <ion-item>
+            <ion-label position="floating">Select City </ion-label>
+            <ion-select interface="popover">
+              <ion-select-option>Calgary</ion-select-option>
+            </ion-select>
+          </ion-item>
+          <ion-item>
+            <ion-label position="floating">From:</ion-label>
+            <ion-datetime displayFormat="MM/DD/YYYY"></ion-datetime>
+            <ion-label position="floating">To</ion-label>
+            <ion-datetime displayFormat="MM/DD/YYYY"></ion-datetime>
+          </ion-item>
+          <ion-button (click)="skillReportModalClicked()"
+            >Generate Report</ion-button
+          >
+        </ion-card>
+      </ion-col>
+      <ion-col>
+        <ion-card>
+          <ion-card-header>Payment Gateway</ion-card-header>
+          <ion-item>
+            <ion-label>Gateway Name</ion-label>
+            <ion-input></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label>Status</ion-label>
+            <ion-input></ion-input> </ion-item
+          ><ion-item>
+            <ion-label>Actions</ion-label>
+            <ion-input></ion-input>
+          </ion-item>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col>
+        <ion-card>
+          <ion-card-header>Earnings</ion-card-header>
+          <ion-item>
+            <ion-label>Select Provider</ion-label>
+            <ion-select interface="popover">
+              <ion-select-option *ngFor="let provider of allProviders"
+                >{{provider.firstName}} {{provider.lastName}}</ion-select-option
+              >
+            </ion-select>
+          </ion-item>
+          <ion-grid>
+            <ion-row>
+              <ion-col>
+                <ion-label>
+                  Worker's Name
+                </ion-label>
+              </ion-col>
+              <ion-col>
+                <ion-label>
+                  Total Tasks
+                </ion-label>
+              </ion-col>
+              <ion-col>
+                <ion-label>
+                  Earnings Per Task
+                </ion-label>
+              </ion-col>
+              <ion-col>
+                <ion-label>
+                  Coupons Amount
+                </ion-label>
+              </ion-col>
+              <ion-col>
+                <ion-label>
+                  Service
+                </ion-label>
+              </ion-col>
+              <ion-col>
+                <ion-label>
+                  Tax
+                </ion-label>
+              </ion-col>
+              <ion-col>
+                <ion-label>
+                  Total Earnings
+                </ion-label>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+        </ion-card>
+      </ion-col>
+      <ion-col>
+        <ion-card>
+          <ion-card-header>Payments</ion-card-header>
+          <ion-item>
+            <ion-label>Select Seeker</ion-label>
+            <ion-select interface="popover">
+              <ion-select-option *ngFor="let seeker of allSeekers"
+                >{{seeker.firstName}} {{seeker.lastName}}</ion-select-option
+              >
+            </ion-select>
+          </ion-item>
+          <ion-grid>
+            <ion-row>
+              <ion-col>
+                Seeker's Name
+              </ion-col>
+              <ion-col>
+                Total Tasks
+              </ion-col>
+              <ion-col>
+                Spent Per Task
+              </ion-col>
+              <ion-col>
+                Coupons Amount
+              </ion-col>
+              <ion-col>
+                Service
+              </ion-col>
+              <ion-col>
+                Tax
+              </ion-col>
+              <ion-col>
+                Total Paid
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-card id="promoMasterCard" color="secondary">
+        <ion-grid>
+          <ion-row>
+            <ion-col>
+              <ion-card>
+                <ion-card-content>
+                  <form #promoForm="ngForm" (ngSubmit)="createPromo(promoForm)">
+                    <ion-title>Add a New Promo</ion-title>
+
+                    <ion-item>
+                      <ion-label>Name:</ion-label>
+
+                      <ion-input
+                        required
+                        type="text"
+                        name="name"
+                        #name="ngModel"
+                        [(ngModel)]="registerPromoData.name"
+                      ></ion-input>
+                    </ion-item>
+
+                    <ion-item>
+                      <ion-label>Amount:</ion-label>
+
+                      <ion-input
+                        required
+                        type="text"
+                        name="amount"
+                        #amount="ngModel"
+                        [(ngModel)]="registerPromoData.amount"
+                      ></ion-input>
+                    </ion-item>
+                    <ion-item>
+                      <ion-label>Type:</ion-label>
+
+                      <ion-select
+                        interface="popover"
+                        required
+                        type="text"
+                        name="type"
+                        #type="ngModel"
+                        [(ngModel)]="registerPromoData.type"
+                      >
+                        <ion-select-option>
+                          Flat
+                        </ion-select-option>
+                        <ion-select-option>
+                          %
+                        </ion-select-option>
+                      </ion-select>
+                    </ion-item>
+                    <ion-item>
+                      <ion-label>Active:</ion-label>
+
+                      <ion-select
+                        interface="popover"
+                        required
+                        type="text"
+                        name="active"
+                        #active="ngModel"
+                        [(ngModel)]="registerPromoData.active"
+                      >
+                        <ion-select-option>
+                          True
+                        </ion-select-option>
+                        <ion-select-option>
+                          False
+                        </ion-select-option></ion-select
+                      >
+                    </ion-item>
+
+                    <ion-button
+                      [disabled]="promoForm.form.invalid"
+                      class="button"
+                      type="submit"
+                      >Submit</ion-button
+                    >
+                  </form>
+                </ion-card-content>
+              </ion-card>
+            </ion-col>
+            <ion-col> </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-card id="promoDetailsCard">
+              <ion-card-header>All Promotions</ion-card-header>
+              <ion-grid>
+                <ion-row>
+                  <ion-col>
+                    <ion-label>
+                      Name
+                    </ion-label>
+                  </ion-col>
+                  <ion-col>
+                    <ion-label>
+                      Amount ($ or %)
+                    </ion-label>
+                  </ion-col>
+                  <ion-col>
+                    <ion-label>
+                      Type
+                    </ion-label>
+                  </ion-col>
+                  <ion-col>
+                    <ion-label>
+                      Active
+                    </ion-label>
+                  </ion-col>
+                  <ion-col>
+                    <ion-label>
+                      Promo Code
+                    </ion-label>
+                  </ion-col>
+                  <ion-col>
+                    <ion-label>
+                      Delete
+                    </ion-label>
+                  </ion-col>
+                </ion-row>
+              </ion-grid>
+
+              <ion-item *ngFor="let promo of allPromos">
+                <ion-label>{{promo.name}}</ion-label>
+                <ion-label>
+                  {{promo.amount}}
+                </ion-label>
+                <ion-label>
+                  {{promo.type}}
+                </ion-label>
+                <ion-label>
+                  {{promo.active}}
+                </ion-label>
+                <ion-label>
+                  {{promo._id}}
+                </ion-label>
+                <ion-label>
+                  <ion-buttons>
+                    <ion-button (click)="deletePromo(promo._id, promoForm)">
+                      <ion-icon slot="end" name="trash"></ion-icon>
+                    </ion-button>
+                  </ion-buttons>
+                </ion-label>
+              </ion-item>
+            </ion-card>
+          </ion-row>
+        </ion-grid>
+      </ion-card>
+    </ion-row>
+  </ion-grid>
+
+  <div id="footer">
+    <ion-grid>
+      <ion-row>
+        <ion-col id="footerTitles">
+          Find Out More
+        </ion-col>
+        <ion-col id="footerTitles">
+          Policies
+        </ion-col>
+        <ion-col id="footerTitles">
+          Connect
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col>
+          <button (click)="openFaq()" id="btnWhite">FAQ</button>
+        </ion-col>
+        <ion-col>
+          <button (click)="openTerms()" id="btnWhite">Terms of Service</button>
+        </ion-col>
+        <ion-col>
+          <button class="social-signin facebook">Connect with Facebook</button>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col>
+          <button (click)="openJob()" id="btnWhite">Post a Job</button>
+        </ion-col>
+        <ion-col>
+          <button id="btnWhite">Privacy Policy</button>
+        </ion-col>
+        <ion-col>
+          <button class="social-signin twitter">Connect with Twitter</button>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col>
+          <button (click)="openContactUs()" id="btnWhite">Contact Us</button>
+        </ion-col>
+        <ion-col>
+          <button id="btnWhite">Our Promise</button>
+        </ion-col>
+        <ion-col>
+          <button class="social-signin google">Connect with Google+</button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+</ion-content>

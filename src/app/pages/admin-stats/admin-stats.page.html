@@ -1,0 +1,426 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons>
+      <ion-button (click)="homeClicked()">Home</ion-button>
+      <ion-button (click)="statsClicked()">Stats</ion-button>
+      <ion-button (click)="usersClicked()">Users</ion-button>
+      <ion-button (click)="servicesClicked()">Services</ion-button>
+      <ion-button (click)="paymentClicked()">Payment Information</ion-button>
+      <ion-button (click)="templatesClicked()">Templates</ion-button>
+      <ion-button (click)="outreachClicked()">Outreach</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-title>Statistics</ion-title>
+
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <ion-card>
+          <ion-card-header>Seeker Stats</ion-card-header>
+
+          <ion-grid>
+            <ion-row>
+              <ion-col>
+                <ion-card-title>New Seekers</ion-card-title>
+                <ion-grid>
+                  <ion-row>
+                    <ion-label> Today:</ion-label>
+                    <ion-label>3</ion-label>
+                  </ion-row>
+                  <ion-row>
+                    <ion-label> This Week:</ion-label>
+                    <ion-label>15</ion-label>
+                  </ion-row>
+                  <ion-row>
+                    <ion-label> This Month:</ion-label>
+                    <ion-label>34</ion-label>
+                  </ion-row>
+                  <ion-row>
+                    <ion-label>YTD</ion-label>
+                    <ion-label>178</ion-label>
+                  </ion-row>
+                </ion-grid>
+              </ion-col>
+              <ion-col>
+                <ion-grid>
+                  <ion-card-title>Deleted Seekers</ion-card-title>
+                  <ion-row>
+                    <ion-label> Today</ion-label>
+                    <ion-label>1</ion-label>
+                  </ion-row>
+                  <ion-row>
+                    <ion-label> This Week</ion-label>
+                    <ion-label>5</ion-label>
+                  </ion-row>
+                  <ion-row>
+                    <ion-label> This Month</ion-label>
+                    <ion-label>9</ion-label>
+                  </ion-row>
+                  <ion-row>
+                    <ion-label> This Year</ion-label>
+                    <ion-label>21</ion-label>
+                  </ion-row>
+                  <ion-row>
+                    <ion-label>YTD</ion-label>
+                    <ion-label>34</ion-label>
+                  </ion-row>
+                </ion-grid>
+              </ion-col>
+            </ion-row>
+            <ion-row>
+              <canvas
+                baseChart
+                [datasets]="chartData"
+                [labels]="chartLabels"
+                [chartType]="chartType"
+                [colors]="chartColors"
+                [legend]="showLegend"
+                [options]="chartOptions"
+              >
+              </canvas>
+            </ion-row>
+            <ion-row>
+              <ion-card-title>Current Seekers: {{144}} </ion-card-title>
+            </ion-row>
+
+            <ion-button (click)="seekersClicked()" color="primary">
+              Seekers</ion-button
+            >
+            <ion-button (click)="seekerYTDModalClicked()">YTD Stats</ion-button>
+          </ion-grid>
+        </ion-card>
+      </ion-col>
+
+      <ion-col>
+        <ion-card>
+          <ion-card-header>9ine To 5iver Stats</ion-card-header>
+
+          <ion-grid>
+            <ion-row>
+              <ion-col>
+                <ion-card-title>New 9ine To 5ivers</ion-card-title>
+                <ion-grid>
+                  <ion-row>
+                    <ion-label> Today:</ion-label>
+                    <ion-label>3</ion-label>
+                  </ion-row>
+                  <ion-row>
+                    <ion-label> This Week:</ion-label>
+                    <ion-label>15</ion-label>
+                  </ion-row>
+                  <ion-row>
+                    <ion-label> This Month:</ion-label>
+                    <ion-label>34</ion-label>
+                  </ion-row>
+                  <ion-row>
+                    <ion-label>YTD</ion-label>
+                    <ion-label>178</ion-label>
+                  </ion-row>
+                </ion-grid>
+              </ion-col>
+              <ion-col>
+                <ion-grid>
+                  <ion-card-title>Deleted 9ine To 5ivers</ion-card-title>
+                  <ion-row>
+                    <ion-label> Today</ion-label>
+                    <ion-label>1</ion-label>
+                  </ion-row>
+                  <ion-row>
+                    <ion-label> This Week</ion-label>
+                    <ion-label>5</ion-label>
+                  </ion-row>
+                  <ion-row>
+                    <ion-label> This Month</ion-label>
+                    <ion-label>9</ion-label>
+                  </ion-row>
+                  <ion-row>
+                    <ion-label> This Year</ion-label>
+                    <ion-label>21</ion-label>
+                  </ion-row>
+                  <ion-row>
+                    <ion-label>YTD</ion-label>
+                    <ion-label>34</ion-label>
+                  </ion-row>
+                </ion-grid>
+              </ion-col>
+            </ion-row>
+            <ion-row>
+              <canvas
+                baseChart
+                [datasets]="providerChartData"
+                [labels]="providerChartLabels"
+                [chartType]="providerChartType"
+                [colors]="providerChartColors"
+                [legend]="providerChartshowLegend"
+                [options]="providerChartOptions"
+              >
+              </canvas>
+            </ion-row>
+            <ion-row>
+              <ion-card-title>Current 9ine To 5ivers: {{144}} </ion-card-title>
+            </ion-row>
+
+            <ion-button (click)="nineToFiversClicked()" color="primary">
+              9ine To 5ivers</ion-button
+            >
+            <ion-button (click)="nineToFiverYTDModalClicked()"
+              >YTD Stats</ion-button
+            >
+          </ion-grid>
+        </ion-card>
+      </ion-col>
+
+      <ion-col>
+        <ion-card>
+          <ion-card-header>Task Stats</ion-card-header>
+
+          <ion-grid>
+            <ion-row>
+              <ion-col>
+                <ion-card-title>New Tasks</ion-card-title>
+                <ion-grid>
+                  <ion-row>
+                    <ion-label> Today:</ion-label>
+                    <ion-label>3</ion-label>
+                  </ion-row>
+                  <ion-row>
+                    <ion-label> This Week:</ion-label>
+                    <ion-label>15</ion-label>
+                  </ion-row>
+                  <ion-row>
+                    <ion-label> This Month:</ion-label>
+                    <ion-label>34</ion-label>
+                  </ion-row>
+                  <ion-row>
+                    <ion-label>YTD</ion-label>
+                    <ion-label>178</ion-label>
+                  </ion-row>
+                </ion-grid>
+              </ion-col>
+              <ion-col>
+                <ion-grid>
+                  <ion-card-title>Deleted Tasks</ion-card-title>
+                  <ion-row>
+                    <ion-label> Today</ion-label>
+                    <ion-label>1</ion-label>
+                  </ion-row>
+                  <ion-row>
+                    <ion-label> This Week</ion-label>
+                    <ion-label>5</ion-label>
+                  </ion-row>
+                  <ion-row>
+                    <ion-label> This Month</ion-label>
+                    <ion-label>9</ion-label>
+                  </ion-row>
+                  <ion-row>
+                    <ion-label> This Year</ion-label>
+                    <ion-label>21</ion-label>
+                  </ion-row>
+                  <ion-row>
+                    <ion-label>YTD</ion-label>
+                    <ion-label>34</ion-label>
+                  </ion-row>
+                </ion-grid>
+              </ion-col>
+            </ion-row>
+            <ion-row>
+              <ion-card>
+                <ion-grid>
+                  <ion-row>
+                    <ion-item>
+                      <canvas
+                        baseChart
+                        [datasets]="taskChartData"
+                        [labels]="taskChartLabels"
+                        [chartType]="taskChartType"
+                        [colors]="taskChartColors"
+                        [legend]="taskChartshowLegend"
+                        [options]="taskChartOptions"
+                      >
+                      </canvas>
+                    </ion-item>
+                  </ion-row>
+                </ion-grid>
+              </ion-card>
+            </ion-row>
+            <ion-row>
+              <ion-card-title>Current Tasks: {{144}} </ion-card-title>
+            </ion-row>
+
+            <ion-button (click)="tasksClicked()" color="primary">
+              Tasks</ion-button
+            >
+            <ion-button (click)="tasksYTDModalClicked()">YTD Stats</ion-button>
+          </ion-grid>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <ion-card>
+          <ion-card-header>Skills</ion-card-header>
+          <ion-card-title>Current Skills Offered</ion-card-title>
+          <ion-grid>
+            <ion-row>
+              <ion-item *ngFor="let _skill of allSkills">
+                <ion-title>{{_skill.name}}</ion-title>
+              </ion-item>
+              <ion-button id="goToSkills" (click)="skillsClicked()"
+                >Go To Skills</ion-button
+              >
+            </ion-row>
+          </ion-grid>
+        </ion-card>
+      </ion-col>
+      <ion-col>
+        <ion-card>
+          <ion-card-header>Task Hub</ion-card-header>
+          <ion-grid>
+            <ion-row>
+              <ion-title>Total Ongoing: 5</ion-title>
+              <ion-title>Total Cancelled: 15</ion-title>
+              <ion-title>Total Completed: 250</ion-title>
+            </ion-row>
+          </ion-grid>
+        </ion-card>
+      </ion-col>
+      <ion-row>
+        <ion-card>
+          <ion-card-header>Sub Skills</ion-card-header>
+
+          <ion-card-title>Current Sub Skills Offered</ion-card-title>
+          <ion-grid>
+            <ion-row>
+              <ion-title *ngFor="let _subSkill of allSubSkills"
+                >{{_subSkill.name}}</ion-title
+              >
+              <ion-button (click)="subSkillsClicked()"
+                >Go To SubSkills</ion-button
+              >
+            </ion-row>
+          </ion-grid>
+        </ion-card>
+      </ion-row>
+    </ion-row>
+  </ion-grid>
+
+  <ion-card>
+    <ion-card-header>Earnings</ion-card-header>
+    <ion-card-title>Total Earnings</ion-card-title>
+
+    <ion-grid>
+      <ion-row>
+        <ion-col>
+          <ion-row>
+            <ion-title> Today:</ion-title>
+            <ion-title>300</ion-title>
+          </ion-row>
+          <ion-row>
+            <ion-title> This Week:</ion-title>
+            <ion-title>1500</ion-title>
+          </ion-row>
+          <ion-row>
+            <ion-title> This Month:</ion-title>
+            <ion-title>3400</ion-title>
+          </ion-row>
+          <ion-row>
+            <ion-title>YTD</ion-title>
+            <ion-title>17800</ion-title>
+          </ion-row>
+        </ion-col>
+        <ion-col>
+          <ion-card>
+            <ion-grid>
+              <ion-row>
+                <ion-item>
+                  <canvas
+                    baseChart
+                    [datasets]="earningsChartData"
+                    [labels]="earningsChartLabels"
+                    [chartType]="earningsChartType"
+                    [colors]="earningsChartColors"
+                    [legend]="earningsChartshowLegend"
+                    [options]="earningsChartOptions"
+                  >
+                  </canvas>
+                </ion-item>
+              </ion-row>
+            </ion-grid>
+          </ion-card>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-card>
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <ion-card>
+          <ion-card-header>Tasker Hub</ion-card-header>
+          <ion-title>Select Tasker</ion-title>
+          <ion-select placeholder="Select One" interface="popover">
+            <ion-select-option *ngFor="let _provider of allProviders"
+              >{{_provider.firstName}} {{_provider.lastName}}</ion-select-option
+            >
+          </ion-select>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <div id="footer">
+    <ion-grid>
+      <ion-row>
+        <ion-col id="footerTitles">
+          Find Out More
+        </ion-col>
+        <ion-col id="footerTitles">
+          Policies
+        </ion-col>
+        <ion-col id="footerTitles">
+          Connect
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col>
+          <button (click)="openFaq()" id="btnWhite">FAQ</button>
+        </ion-col>
+        <ion-col>
+          <button (click)="openTerms()" id="btnWhite">Terms of Service</button>
+        </ion-col>
+        <ion-col>
+          <button class="social-signin facebook">Connect with Facebook</button>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col>
+          <button (click)="openJob()" id="btnWhite">Post a Job</button>
+        </ion-col>
+        <ion-col>
+          <button id="btnWhite">Privacy Policy</button>
+        </ion-col>
+        <ion-col>
+          <button class="social-signin twitter">Connect with Twitter</button>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col>
+          <button (click)="openContactUs()" id="btnWhite">Contact Us</button>
+        </ion-col>
+        <ion-col>
+          <button id="btnWhite">Our Promise</button>
+        </ion-col>
+        <ion-col>
+          <button class="social-signin google">Connect with Google+</button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+</ion-content>

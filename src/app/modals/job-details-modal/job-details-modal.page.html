@@ -1,0 +1,68 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>Job Details</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card *ngIf="currentJob">
+    <ion-item>
+      <ion-title>Job ID</ion-title>
+      <ion-label type="text">{{currentJob._id}}</ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-title>Seeker ID</ion-title>
+      <ion-select>
+        <ion-select-option *ngFor="let seeker of allSeekers"
+          >{{seeker.firstName}} {{seeker.lastName}}</ion-select-option
+        >
+      </ion-select>
+    </ion-item>
+    <ion-item>
+      <ion-title>Provider ID</ion-title>
+      <ion-select>
+        <ion-select-option *ngFor="let provider of allProviders"
+          >{{provider.firstName}} {{provider.lastName}}</ion-select-option
+        >
+      </ion-select>
+    </ion-item>
+    <ion-item>
+      <ion-title>Type</ion-title>
+      <ion-select>
+        <ion-select-option *ngFor="let skill of allSkills"
+          >{{skill.name}}</ion-select-option
+        >
+      </ion-select>
+    </ion-item>
+    <ion-item>
+      <ion-title>Sub Type</ion-title>
+      <ion-select multiple="true">
+        <ion-select-option *ngFor="let subSkill of allSubSkills"
+          >{{subSkill.name}}
+        </ion-select-option>
+      </ion-select>
+    </ion-item>
+    <ion-item>
+      <ion-title>City</ion-title>
+      <ion-input type="text">{{currentJob.city}}</ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-title>Date</ion-title>
+      <ion-datetime
+        displayFormat="MM DD YYYY"
+        placeholder="Select Date"
+      ></ion-datetime>
+    </ion-item>
+    <ion-item>
+      <ion-title>Completed</ion-title>
+      <ion-select interface="popover">
+        <ion-select-option>True </ion-select-option>
+        <ion-select-option>False </ion-select-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-button>Update</ion-button>
+    <ion-button>Delete</ion-button>
+    <ion-button (click)="dismiss()">Close</ion-button>
+  </ion-card>
+</ion-content>

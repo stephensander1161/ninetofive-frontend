@@ -1,0 +1,140 @@
+<ion-content>
+  <ion-title id="title">Job Progress</ion-title>
+
+  <form id="searchJobs">
+    <ion-card color="secondary">
+      <ion-title>JOB {{listJobs._id}}</ion-title>
+
+      <ion-label>Type:</ion-label>
+      <ion-item color="secondary">{{listJobs.type}}</ion-item>
+
+      <ion-label>City:</ion-label>
+      <ion-item color="secondary">{{listJobs.city}}</ion-item>
+
+      <ion-label>Address:</ion-label>
+      <ion-item color="secondary">{{listJobs.address}}</ion-item>
+
+      <ion-label>Estimate:</ion-label>
+      <ion-item color="secondary">{{listJobs.estimate}}</ion-item>
+
+      <ion-label>Duration:</ion-label>
+      <ion-item color="secondary">{{listJobs.time}}</ion-item>
+
+      <ion-label>Description:</ion-label>
+      <ion-item color="secondary">{{listJobs.description}}</ion-item>
+
+      <ion-button color="success" id="button">Chat</ion-button>
+      <ion-button color="success" id="button">Call</ion-button>
+      <ion-button color="warning" id="button" type="submit">Cancel</ion-button>
+      <ion-button
+        color="success"
+        (click)="startClicked()"
+        id="button"
+        type="submit"
+        >Start</ion-button
+      >
+      <ion-button
+        *ngIf="taskCompleted"
+        (click)="completedClicked()"
+        color="success"
+        id="button"
+        type="submit"
+        >Task Complete</ion-button
+      >
+    </ion-card>
+
+    <ion-card *ngIf="materialsAdded">
+      <ion-card-header>
+        <ion-card-subtitle
+          >{{currentDate | date:'yyyy-MM-dd HH:mm'}}
+        </ion-card-subtitle>
+        <ion-card-title>Cost of Materials</ion-card-title>
+      </ion-card-header>
+      <ion-list>
+        <ion-input placeholder="name of material"></ion-input>
+        <ion-input placeholder="price"></ion-input>
+        <ion-button id="button" (click)="addClicked()" color="success"
+          >Add</ion-button
+        >
+        <ion-button id="button" color="success">Skip</ion-button>
+
+        <ion-item>
+          <input type="file" id="myFile" name="filename" />
+        </ion-item>
+      </ion-list>
+    </ion-card>
+
+    <ion-card *ngIf="materialsAdded1">
+      <ion-card-header>
+        <ion-card-subtitle
+          >{{currentDate | date:'yyyy-MM-dd HH:mm'}}
+        </ion-card-subtitle>
+        <ion-card-title>Cost of Materials</ion-card-title>
+      </ion-card-header>
+      <ion-list>
+        <ion-input placeholder="name of material"></ion-input>
+        <ion-input placeholder="price"></ion-input>
+        <ion-button id="button" (click)="addClicked()" color="success"
+          >Add</ion-button
+        >
+        <ion-button id="button" color="success">Skip</ion-button>
+
+        <ion-item>
+          <input type="file" id="myFile" name="filename" />
+        </ion-item>
+      </ion-list>
+    </ion-card>
+  </form>
+
+  <div id="footer">
+    <ion-grid>
+      <ion-row>
+        <ion-col id="footerTitles">
+          Find Out More
+        </ion-col>
+        <ion-col id="footerTitles">
+          Policies
+        </ion-col>
+        <ion-col id="footerTitles">
+          Connect
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col>
+          <button (click)="openFaq()" id="btnWhite">FAQ</button>
+        </ion-col>
+        <ion-col>
+          <button (click)="openTerms()" id="btnWhite">Terms of Service</button>
+        </ion-col>
+        <ion-col>
+          <button class="social-signin facebook">Connect with Facebook</button>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col>
+          <button (click)="openJob()" id="btnWhite">Post a Job</button>
+        </ion-col>
+        <ion-col>
+          <button id="btnWhite">Privacy Policy</button>
+        </ion-col>
+        <ion-col>
+          <button class="social-signin twitter">Connect with Twitter</button>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col>
+          <button (click)="openContactUs()" id="btnWhite">Contact Us</button>
+        </ion-col>
+        <ion-col>
+          <button id="btnWhite">Our Promise</button>
+        </ion-col>
+        <ion-col>
+          <button class="social-signin google">Connect with Google+</button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+</ion-content>

@@ -1,0 +1,394 @@
+<ion-content>
+  <div id="header"></div>
+  <form (ngSubmit)="registerUser()" #signupForm="ngForm">
+    <ion-card id="signupCard">
+      <ion-title>Sign Up</ion-title>
+      <ion-item>
+        <ion-label>First Name:</ion-label>
+        <ion-input
+          class="capitalize"
+          required
+          minlength="2"
+          required
+          maxlength="15"
+          ngModel
+          pattern="[a-zA-Z ]*"
+          type="text"
+          [(ngModel)]="registerUserData.firstName"
+          name="firstName"
+          #firstName="ngModel"
+        ></ion-input>
+        <div
+          *ngIf="firstName.invalid && (firstName.dirty || firstName.touched)"
+          class="alert alert-danger"
+        >
+          <div *ngIf="firstName.errors.required">
+            First Name is required.
+          </div>
+          <div *ngIf="firstName.errors.minlength">
+            First Name must be at least 2 characters long.
+          </div>
+          <div *ngIf="firstName.errors.pattern">
+            First Name can only contain letters.
+          </div>
+        </div>
+      </ion-item>
+      <ion-item>
+        <ion-label>Last Name:</ion-label>
+        <ion-input
+          class="capitalize"
+          required
+          minlength="2"
+          required
+          maxlength="15"
+          ngModel
+          pattern="[a-zA-Z ]*"
+          type="text"
+          #lastName="ngModel"
+          [(ngModel)]="registerUserData.lastName"
+          name="lastName"
+        ></ion-input>
+        <div
+          *ngIf="lastName.invalid && (lastName.dirty || lastName.touched)"
+          class="alert alert-danger"
+        >
+          <div *ngIf="lastName.errors.required">
+            Last Name is required.
+          </div>
+          <div *ngIf="lastName.errors.minlength">
+            Last Name must be at least 2 characters long.
+          </div>
+          <div *ngIf="lastName.errors.pattern">
+            Last Name can only contain letters.
+          </div>
+        </div>
+      </ion-item>
+      <ion-item>
+        <ion-label>Email:</ion-label>
+        <ion-input
+          required
+          email
+          #email="ngModel"
+          type="text"
+          [(ngModel)]="registerUserData.email"
+          name="email"
+        ></ion-input>
+        <div
+          *ngIf="email.invalid && (email.dirty || email.touched)"
+          class="alert alert-danger"
+        >
+          <div *ngIf="email.errors.email">
+            Email is required.
+          </div>
+        </div>
+      </ion-item>
+      <ion-item>
+        <ion-label>Password:</ion-label>
+        <ion-input
+          type="password"
+          [(ngModel)]="registerUserData.password"
+          name="password"
+          required
+          #password="ngModel"
+          pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
+        ></ion-input>
+        <div
+          *ngIf="password.invalid && (signupForm.submitted || password.touched)"
+          class="alert alert-danger"
+        >
+          <div *ngIf="password.errors.required">Password is required.</div>
+          <div *ngIf="password.errors.pattern">
+            Must contain at least one number and one uppercase and lowercase
+            letter, and at least 8 or more characters.
+          </div>
+        </div>
+      </ion-item>
+      <ion-item>
+        <ion-label>Re-enter Your Password:</ion-label>
+        <ion-input
+          type="password"
+          name="confirmPassword"
+          required
+          [(ngModel)]="registerUserData.confirmPassword"
+          #confirmPassword="ngModel"
+          pattern="{{ password.value }}"
+        ></ion-input>
+        <div
+          *ngIf=" confirmPassword.invalid && (signupForm.submitted || confirmPassword.touched)"
+          class="alert alert-danger"
+        >
+          <div *ngIf="confirmPassword.errors.required">
+            Confirm password is required.
+          </div>
+          <div *ngIf="confirmPassword.errors.pattern">
+            Password & Confirm Password do not match.
+          </div>
+        </div>
+      </ion-item>
+      <ion-item>
+        <ion-label>Phone Number:</ion-label>
+        <ion-input
+          type="text"
+          [(ngModel)]="registerUserData.phoneNumber"
+          name="phoneNumber"
+          #phoneNumber="ngModel"
+          required
+          pattern="^((\\+91-?)|0)?[0-9]{10}$"
+        ></ion-input>
+        <div
+          *ngIf=" phoneNumber.invalid && (signupForm.submitted || phoneNumber.touched)"
+          class="alert alert-danger"
+        >
+          <div *ngIf="phoneNumber.errors.required">
+            Phone Number is required.
+          </div>
+          <div *ngIf="phoneNumber.errors.pattern">
+            Must be a valid number and contain no spaces
+          </div>
+        </div>
+      </ion-item>
+      <ion-item>
+        <ion-label>City:</ion-label>
+        <ion-input
+          class="capitalize"
+          type="text"
+          [(ngModel)]="registerUserData.city"
+          name="city"
+          #city="ngModel"
+          required
+          minlength="3"
+          maxlength="15"
+          pattern="[a-zA-Z ]*"
+        ></ion-input>
+        <div
+          *ngIf=" city.invalid && (signupForm.submitted || city.touched)"
+          class="alert alert-danger"
+        >
+          <div *ngIf="city.errors.required">City is required.</div>
+          <div *ngIf="city.errors.pattern">Can only contain letters</div>
+        </div>
+      </ion-item>
+      <ion-item>
+        <ion-label>Address:</ion-label>
+        <ion-input
+          class="capitalize"
+          type="text"
+          [(ngModel)]="registerUserData.address"
+          name="address"
+          required
+          #address="ngModel"
+        ></ion-input>
+        <div
+          *ngIf=" address.invalid && (signupForm.submitted || address.touched)"
+          class="alert alert-danger"
+        >
+          <div *ngIf="address.errors.required">Address is required.</div>
+        </div>
+      </ion-item>
+      <ion-item>
+        <ion-label>Postal Code:</ion-label>
+        <ion-input
+          oninput="this.value = this.value.toUpperCase()"
+          type="text"
+          [(ngModel)]="registerUserData.postalCode"
+          name="postalCode"
+          required
+          #postalCode="ngModel"
+          pattern="^[A-Za-z]\d[A-Za-z][ -]?\d[A-Za-z]\d$"
+        ></ion-input>
+
+        <div
+          *ngIf=" postalCode.invalid && (signupForm.submitted || postalCode.touched)"
+          class="alert alert-danger"
+        >
+          <div *ngIf="postalCode.errors.required">Address is required.</div>
+          <div *ngIf="postalCode.errors.pattern">
+            Must be a valid Postal Code
+          </div>
+        </div>
+      </ion-item>
+
+      <ion-item>
+        <ion-checkbox [(ngModel)]="provider" name="provider"></ion-checkbox>
+
+        <ion-label>
+          &nbsp;I would also like to sign up as a Service Provider</ion-label
+        >
+      </ion-item>
+      <div *ngIf="provider">
+        <ion-card>
+          <ion-title>Provider Signup Continued</ion-title>
+
+          <ion-title>Skills</ion-title>
+          <ion-item>
+            <ion-label>Primary Skill</ion-label>
+            <ion-select
+              placeholder="Select One"
+              [(ngModel)]="registerUserData.primarySkill"
+              name="primarySkill"
+            >
+              <ion-select-option *ngFor="let _skill of skills"
+                >{{_skill.name}}</ion-select-option
+              >
+            </ion-select>
+
+            <ion-input
+              *ngIf="registerUserData.primarySkill === 'Other'"
+              placeholder="Please Specify"
+            ></ion-input>
+          </ion-item>
+
+          <ion-item>
+            <ion-label>Secondary Skill</ion-label>
+            <ion-select
+              placeholder="Select One"
+              [(ngModel)]="registerUserData.secondarySkill"
+              name="secondarySkill"
+            >
+              <ion-select-option *ngFor="let _skill of skills"
+                >{{_skill.name}}</ion-select-option
+              >
+            </ion-select>
+            <ion-input
+              *ngIf="registerUserData.secondarySkill === 'Other'"
+              placeholder="Please Specify"
+            ></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label>Tertiary Skill</ion-label>
+            <ion-select
+              placeholder="Select One"
+              [(ngModel)]="registerUserData.tertiarySkill"
+              name="tertiarySkill"
+            >
+              <ion-select-option *ngFor="let _skill of skills"
+                >{{_skill.name}}</ion-select-option
+              >
+            </ion-select>
+            <ion-input
+              *ngIf="registerUserData.tertiarySkill === 'Other'"
+              placeholder="Please Specify"
+            ></ion-input>
+          </ion-item>
+
+          <ion-item>
+            <ion-label>Experience</ion-label>
+            <ion-select
+              [(ngModel)]="registerUserData.experience"
+              name="experience"
+              placeholder="Experience"
+            >
+              <ion-select-option *ngFor="let _experience of experience">
+                {{_experience.name}}
+              </ion-select-option>
+            </ion-select>
+          </ion-item>
+          <ion-title>Availability</ion-title>
+          <ion-item>
+            <ion-label>Time Available to Start Each Day:</ion-label>
+            <ion-input
+              type="time"
+              [(ngModel)]="registerUserData.earliestCanStart"
+              name="earliestCanStart"
+            ></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label>Days Available To Work:</ion-label>
+            <ion-select
+              multiple="true"
+              [(ngModel)]="registerUserData.daysAvailable"
+              name="daysAvailable"
+              interface="popover"
+              placeholder="Select All That Apply"
+            >
+              <ion-select-option value="Monday">Monday</ion-select-option>
+              <ion-select-option value="Tuesday">Tuesday</ion-select-option>
+              <ion-select-option value="Wednesday">Wednesday</ion-select-option>
+              <ion-select-option value="Thursday">Thursday</ion-select-option>
+              <ion-select-option value="Friday">Friday</ion-select-option>
+              <ion-select-option value="Saturday">Saturday</ion-select-option>
+              <ion-select-option value="Sunday">Sunday</ion-select-option>
+            </ion-select>
+          </ion-item>
+
+          <ion-item>
+            <ion-label>Bio:</ion-label>
+            <ion-textarea
+              type="text"
+              [(ngModel)]="registerUserData.biography"
+              name="biography"
+            ></ion-textarea>
+          </ion-item>
+          <ion-item>
+            <ion-label>Profile Photo:</ion-label>
+            <input type="file" id="myFile" name="filename" />
+          </ion-item>
+          <ion-item>
+            <ion-label>Previous Tasks:</ion-label>
+            <input type="file" id="myFile" name="filename" />
+          </ion-item>
+        </ion-card>
+      </div>
+    </ion-card>
+
+    <ion-button
+      color="success"
+      id="button"
+      type="submit"
+      [disabled]="signupForm.form.invalid"
+      >Next</ion-button
+    >
+  </form>
+
+  <div id="footer">
+    <ion-grid>
+      <ion-row>
+        <ion-col id="footerTitles">
+          Find Out More
+        </ion-col>
+        <ion-col id="footerTitles">
+          Policies
+        </ion-col>
+        <ion-col id="footerTitles">
+          Connect
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col>
+          <button (click)="openFaq()" id="btnWhite">FAQ</button>
+        </ion-col>
+        <ion-col>
+          <button (click)="openTerms()" id="btnWhite">Terms of Service</button>
+        </ion-col>
+        <ion-col>
+          <button class="social-signin facebook">Connect with Facebook</button>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col>
+          <button (click)="openJob()" id="btnWhite">Post a Job</button>
+        </ion-col>
+        <ion-col>
+          <button id="btnWhite">Privacy Policy</button>
+        </ion-col>
+        <ion-col>
+          <button class="social-signin twitter">Connect with Twitter</button>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col>
+          <button (click)="openContactUs()" id="btnWhite">Contact Us</button>
+        </ion-col>
+        <ion-col>
+          <button id="btnWhite">Our Promise</button>
+        </ion-col>
+        <ion-col>
+          <button class="social-signin google">Connect with Google+</button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+</ion-content>

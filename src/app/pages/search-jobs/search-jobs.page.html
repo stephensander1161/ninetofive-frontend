@@ -1,0 +1,93 @@
+<ion-content>
+  <ion-title id="title">Search for a Job</ion-title>
+
+  <ion-searchbar
+    color="success"
+    showCancelButton="focus"
+    placeholder="Search by Type"
+    cancelButtonText="Custom Cancel"
+  ></ion-searchbar>
+
+  <ion-slides pager="true" [options]="slideOpts">
+    <ion-slide id="searchJobs" *ngFor="let job of allJobs">
+      <ion-card>
+        <ion-title>JOB {{job._id}}</ion-title>
+
+        <ion-label>Type</ion-label>
+        <ion-item>{{job.type}}</ion-item>
+
+        <ion-label>Sub Type</ion-label>
+        <ion-item>{{job.subType}}</ion-item>
+
+        <ion-label>City</ion-label>
+        <ion-item>{{job.city}}</ion-item>
+
+        <ion-label>Address</ion-label>
+        <ion-item>{{job.address}}</ion-item>
+
+        <ion-label>Estimate</ion-label>
+        <ion-item>{{job.estimate}}</ion-item>
+
+        <ion-label>Duration</ion-label>
+        <ion-item>{{job.time}}</ion-item>
+
+        <ion-label>Description</ion-label>
+        <ion-item>{{job.description}}</ion-item>
+
+        <ion-button color="success">Claim</ion-button>
+      </ion-card>
+    </ion-slide>
+  </ion-slides>
+
+  <span id="footer">
+    <ion-grid>
+      <ion-row>
+        <ion-col id="footerTitles">
+          Find Out More
+        </ion-col>
+        <ion-col id="footerTitles">
+          Policies
+        </ion-col>
+        <ion-col id="footerTitles">
+          Connect
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col>
+          <button (click)="openFaq()" id="btnWhite">FAQ</button>
+        </ion-col>
+        <ion-col>
+          <button (click)="openTerms()" id="btnWhite">Terms of Service</button>
+        </ion-col>
+        <ion-col>
+          <button class="social-signin facebook">Connect with Facebook</button>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col>
+          <button (click)="openJob()" id="btnWhite">Post a Job</button>
+        </ion-col>
+        <ion-col>
+          <button id="btnWhite">Privacy Policy</button>
+        </ion-col>
+        <ion-col>
+          <button class="social-signin twitter">Connect with Twitter</button>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col>
+          <button (click)="openContactUs()" id="btnWhite">Contact Us</button>
+        </ion-col>
+        <ion-col>
+          <button id="btnWhite">Our Promise</button>
+        </ion-col>
+        <ion-col>
+          <button class="social-signin google">Connect with Google+</button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </span>
+</ion-content>

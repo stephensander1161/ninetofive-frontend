@@ -1,0 +1,60 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>Add a New Provider Review</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card id="cardWidth">
+    <form (ngSubmit)="postReview()">
+      <ion-item>
+        <ion-label position="floating">First Name</ion-label>
+        <ion-input [(ngModel)]="registerReviewData.firstName" name="firstName">
+        </ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>Last Name</ion-label>
+        <ion-input [(ngModel)]="registerReviewData.lastName" name="lastName">
+        </ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Type</ion-label>
+        <ion-select
+          interface="popover"
+          [(ngModel)]="registerReviewData.type"
+          name="type"
+        >
+          <ion-select-option>
+            Provider
+          </ion-select-option>
+          <ion-select-option>
+            Seeker
+          </ion-select-option>
+        </ion-select>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Content</ion-label>
+        <ion-input
+          type="text"
+          [(ngModel)]="registerReviewData.content"
+          name="content"
+        ></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="floating">Date Subscribed</ion-label>
+        <ion-datetime
+          displayFormat="MM/DD/YYYY"
+          [(ngModel)]="registerReviewData.dateSubscribed"
+          name="dateSubscribed"
+          placeholder="Select Date"
+        >
+        </ion-datetime>
+      </ion-item>
+
+      <ion-button id="button" type="submit">Submit</ion-button>
+      <ion-button (click)="dismiss()">Close</ion-button>
+    </form>
+  </ion-card>
+</ion-content>

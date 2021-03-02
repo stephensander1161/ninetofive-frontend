@@ -1,0 +1,327 @@
+<ion-content scroll="false">
+  <div id="header"></div>
+  <div class="firstColor">
+    <ion-slides pager="true" [options]="slideOptsOne">
+      <ion-slide>
+        <ion-grid>
+          <ion-row><br /></ion-row>
+          <ion-row><br /></ion-row>
+          <ion-row>
+            <ion-col>
+              <img id="slideImage" src="assets/img/logoblack.jpg" />
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col>
+              <h1>Who We Are</h1>
+            </ion-col> </ion-row
+          ><ion-row>
+            <ion-col class="whiteFont"
+              >Do you have something that needs fixing? Have you been recently
+              laid off? Then you've come to the right place. <br />
+              Come see how it works.</ion-col
+            >
+          </ion-row>
+          <ion-row><br /></ion-row>
+        </ion-grid>
+      </ion-slide>
+      <ion-slide>
+        <ion-grid>
+          <ion-row>
+            <ion-col>
+              <img id="slideImage" src="assets/img/doer.jpg" />
+            </ion-col>
+          </ion-row>
+
+          <ion-row>
+            <ion-col>
+              <h1>Why Not Sign Up?</h1>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col>
+              <ion-button class="editBtn" *ngIf="admin">Edit</ion-button>
+              <ion-text class="hiwItem"
+                >Sign up and start earning money now.</ion-text
+              >
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </ion-slide>
+      <ion-slide>
+        <ion-grid>
+          <ion-row>
+            <ion-col>
+              <img id="slideImage" src="assets/img/tree.png" />
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col>
+              <h1>Be Your Own Boss</h1>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col>
+              <ion-button class="editBtn" *ngIf="admin">Edit</ion-button>
+              <ion-text class="hiwItem"
+                >Make your own hours, be your own boss, be free!</ion-text
+              >
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </ion-slide>
+      <ion-slide>
+        <ion-grid>
+          <ion-row>
+            <ion-col>
+              <img id="slideImage" src="assets/img/money-box.jpg" />
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col>
+              <h1>Want To Join Us?</h1>
+            </ion-col> </ion-row
+          ><ion-row>
+            <ion-col class="whiteFont"
+              >Whether you're out of a job, or just looking to make some extra
+              cash, join this rapidly growing industry and be part of the next
+              big hiring wave.</ion-col
+            >
+          </ion-row>
+        </ion-grid>
+      </ion-slide>
+    </ion-slides>
+  </div>
+
+  <!--<ion-searchbar color="success" showCancelButton="focus" color="secondary" placeholder="What can we help you with?" cancelButtonText="Custom Cancel"></ion-searchbar> -->
+
+  <ion-grid>
+    <ion-item *ngIf="admin">
+      <ion-button color="light" (click)="oneTheme()">One Theme</ion-button>
+      <ion-button color="light" (click)="twoTheme()">Two Theme</ion-button>
+      <ion-button color="light" (click)="threeTheme()">Three Theme</ion-button>
+      <ion-button color="light" (click)="fourTheme()">Four Theme</ion-button>
+      <ion-button color="light" (click)="fiveTheme()">Five Theme</ion-button>
+      <ion-button color="light" (click)="sixTheme()">Six Theme</ion-button>
+      <ion-button color="light" (click)="sevenTheme()">Seven Theme</ion-button>
+      <ion-button (click)="defaultTheme()">Default Theme</ion-button>
+    </ion-item>
+    <ion-row>
+      <ion-col>
+        <ion-item>
+          <ion-buttons>
+            <ion-button (click)="buildClicked()" color="success">
+              <ion-icon slot="start" name="water"></ion-icon>
+            </ion-button>
+            <ion-button color="success">Plumbing</ion-button>
+          </ion-buttons>
+        </ion-item>
+      </ion-col>
+
+      <ion-col>
+        <ion-item>
+          <ion-buttons>
+            <ion-button color="success">
+              <ion-icon slot="start" name="bulb"></ion-icon>
+            </ion-button>
+            <ion-button color="success">Electrical</ion-button>
+          </ion-buttons>
+        </ion-item>
+      </ion-col>
+
+      <ion-col>
+        <ion-item>
+          <ion-buttons>
+            <ion-button (click)="buildClicked()" color="success">
+              <ion-icon slot="start" name="hammer"></ion-icon>
+            </ion-button>
+            <ion-button (click)="buildClicked()" color="success"
+              >Carpentry</ion-button
+            >
+          </ion-buttons>
+        </ion-item>
+      </ion-col>
+
+      <ion-col>
+        <ion-item>
+          <ion-buttons>
+            <ion-button (click)="buildClicked()" color="success">
+              <ion-icon slot="start" name="leaf"></ion-icon>
+            </ion-button>
+            <ion-button (click)="buildClicked()" color="success"
+              >Landscaping</ion-button
+            >
+          </ion-buttons>
+        </ion-item>
+      </ion-col>
+
+      <ion-col>
+        <ion-item>
+          <ion-buttons>
+            <ion-button (click)="buildClicked()" color="success">
+              <ion-icon slot="start" name="brush"></ion-icon>
+            </ion-button>
+            <ion-button (click)="buildClicked()" color="success"
+              >Other</ion-button
+            >
+          </ion-buttons>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <ion-item color="warning">
+          <ion-title id="moreAboutTitle">More About 9ine to 5ive</ion-title>
+
+          <ion-col>
+            <ion-item color="warning" class="howItWorkList">
+              <ion-textarea rows="3" cols="20" color="success" class="aboutList"
+                >{{about.content}}
+              </ion-textarea>
+            </ion-item>
+          </ion-col>
+          <ion-col></ion-col>
+
+          <ion-col>
+            <ion-img
+              class="brothersPic"
+              src="assets/gallery/profilePicture.jpeg"
+            >
+            </ion-img>
+          </ion-col>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col></ion-col>
+      <ion-col></ion-col>
+      <ion-col></ion-col>
+      <ion-col></ion-col>
+
+      <ion-col>
+        <ion-button (click)="getInTouchClicked()">Get In Touch</ion-button>
+
+        <ion-button id="faqButton" (click)="faqClicked()" color="success"
+          >FAQ</ion-button
+        ></ion-col
+      >
+    </ion-row>
+  </ion-grid>
+
+  <ion-item color="success">
+    <ion-row>
+      <ion-col>
+        <ion-card>
+          <ion-img src="assets/img/toonplumber.jpg"> </ion-img>
+        </ion-card>
+      </ion-col>
+      <ion-col>
+        <ion-title id="howItWorksTitle">How Does It Work?</ion-title>
+      </ion-col>
+
+      <ion-col>
+        <ion-row *ngFor="let howItWork of allHowItWorks ">
+          <ion-item color="success" class="howItWorkList">
+            <ion-header color="success" class="howItWorkList"
+              >{{howItWork.content}}
+            </ion-header>
+          </ion-item>
+        </ion-row>
+      </ion-col>
+    </ion-row>
+  </ion-item>
+  <div class="spacer"></div>
+
+  <ion-item color="warning">
+    <ion-row>
+      <ion-col>
+        <ion-row *ngFor="let guarantee of allGuarantees">
+          <ion-item color="four" class="howItWorkList">
+            <ion-header color="four" class="howItWorkList"
+              >{{guarantee.content}}
+            </ion-header>
+          </ion-item>
+        </ion-row>
+      </ion-col>
+      <ion-col>
+        <ion-title id="guaranteeTitle">Our Guarantee</ion-title>
+      </ion-col>
+      <ion-col>
+        <ion-card>
+          <ion-img src="assets/img/toonplumber.jpg"> </ion-img>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-item>
+
+  <div class="spacer"></div>
+
+  <ion-title id="custTitle">Customer Testimonials</ion-title>
+
+  <ion-slides pager="true">
+    <ion-slide *ngFor="let testimonial of allTestimonials">
+      <ion-card>
+        <ion-card-header> </ion-card-header>
+        <ion-title> {{testimonial.id}}</ion-title>
+
+        <ion-card-content> {{testimonial.body}}</ion-card-content>
+
+        <ion-button
+          id="testimonialButton"
+          color="success"
+          (click)="genericProfileModal()"
+          >See Profile</ion-button
+        >
+      </ion-card>
+    </ion-slide>
+  </ion-slides>
+
+  <div id="footer">
+    <ion-grid>
+      <ion-row>
+        <ion-col id="footerTitles"> Find Out More </ion-col>
+        <ion-col id="footerTitles"> Policies </ion-col>
+        <ion-col id="footerTitles"> Connect </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col>
+          <button (click)="openFaq()" id="btnWhite">FAQ</button>
+        </ion-col>
+        <ion-col>
+          <button (click)="openTerms()" id="btnWhite">Terms of Service</button>
+        </ion-col>
+        <ion-col>
+          <button class="social-signin facebook">Connect with Facebook</button>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col>
+          <button (click)="openJob()" id="btnWhite">Post a Job</button>
+        </ion-col>
+        <ion-col>
+          <button id="btnWhite">Privacy Policy</button>
+        </ion-col>
+        <ion-col>
+          <button class="social-signin twitter">Connect with Twitter</button>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col>
+          <button (click)="openContactUs()" id="btnWhite">Contact Us</button>
+        </ion-col>
+        <ion-col>
+          <button id="btnWhite">Our Promise</button>
+        </ion-col>
+        <ion-col>
+          <button class="social-signin google">Connect with Google+</button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+</ion-content>

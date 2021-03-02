@@ -1,0 +1,101 @@
+<ion-content>
+  <ion-title id="title">Search for a Provider</ion-title>
+
+  <ion-searchbar
+    showCancelButton="focus"
+    color="success"
+    placeholder="Search "
+    cancelButtonText="Custom Cancel"
+  ></ion-searchbar>
+
+  <ion-grid>
+    <ion-row>
+      <ion-col *ngFor="let provider of allProviders " inset="true">
+        <ion-list>
+          <ion-card>
+            <ion-title> {{provider.firstName}} {{provider.lastName}}</ion-title>
+
+            <ion-label>Email</ion-label>
+            <ion-item>{{provider.email}}</ion-item>
+
+            <ion-label>City</ion-label>
+            <ion-item>{{provider.city}}</ion-item>
+
+            <ion-label>Primary Skill</ion-label>
+
+            <ion-item>{{provider.primarySkill}}</ion-item>
+
+            <ion-label>Secondary Skill</ion-label>
+            <ion-item>{{provider.secondarySkill}}</ion-item>
+
+            <ion-label>Experience</ion-label>
+            <ion-item>{{provider.experience}}</ion-item>
+
+            <ion-label>Biography</ion-label>
+            <ion-item>{{provider.biography}}</ion-item>
+
+            <ion-button color="success" (click)="bookClicked()"
+              >Book</ion-button
+            >
+
+            <ion-button color="success" (click)="seeProfileModal()"
+              >See Profile</ion-button
+            >
+          </ion-card>
+        </ion-list>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <div id="footer">
+    <ion-grid>
+      <ion-row>
+        <ion-col id="footerTitles">
+          Find Out More
+        </ion-col>
+        <ion-col id="footerTitles">
+          Policies
+        </ion-col>
+        <ion-col id="footerTitles">
+          Connect
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col>
+          <button (click)="openFaq()" id="btnWhite">FAQ</button>
+        </ion-col>
+        <ion-col>
+          <button (click)="openTerms()" id="btnWhite">Terms of Service</button>
+        </ion-col>
+        <ion-col>
+          <button class="social-signin facebook">Connect with Facebook</button>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col>
+          <button (click)="openJob()" id="btnWhite">Post a Job</button>
+        </ion-col>
+        <ion-col>
+          <button id="btnWhite">Privacy Policy</button>
+        </ion-col>
+        <ion-col>
+          <button class="social-signin twitter">Connect with Twitter</button>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col>
+          <button (click)="openContactUs()" id="btnWhite">Contact Us</button>
+        </ion-col>
+        <ion-col>
+          <button id="btnWhite">Our Promise</button>
+        </ion-col>
+        <ion-col>
+          <button class="social-signin google">Connect with Google+</button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+</ion-content>

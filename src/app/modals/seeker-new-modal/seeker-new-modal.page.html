@@ -1,0 +1,228 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>Sign Up</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form id="providerSignup" (ngSubmit)="registerUser()" #signupForm="ngForm">
+    <ion-card>
+      <ion-item>
+        <ion-label>First Name:</ion-label>
+        <ion-input
+          class="capitalize"
+          required
+          minlength="2"
+          required
+          maxlength="15"
+          ngModel
+          pattern="[a-zA-Z ]*"
+          type="text"
+          [(ngModel)]="registerUserData.firstName"
+          name="firstName"
+          #firstName="ngModel"
+        ></ion-input>
+        <div
+          *ngIf="firstName.invalid && (firstName.dirty || firstName.touched)"
+          class="alert alert-danger"
+        >
+          <div *ngIf="firstName.errors.required">
+            First Name is required.
+          </div>
+          <div *ngIf="firstName.errors.minlength">
+            First Name must be at least 2 characters long.
+          </div>
+          <div *ngIf="firstName.errors.pattern">
+            First Name can only contain letters.
+          </div>
+        </div>
+      </ion-item>
+      <ion-item>
+        <ion-label>Last Name:</ion-label>
+        <ion-input
+          class="capitalize"
+          required
+          minlength="2"
+          required
+          maxlength="15"
+          ngModel
+          pattern="[a-zA-Z ]*"
+          type="text"
+          #lastName="ngModel"
+          [(ngModel)]="registerUserData.lastName"
+          name="lastName"
+        ></ion-input>
+        <div
+          *ngIf="lastName.invalid && (lastName.dirty || lastName.touched)"
+          class="alert alert-danger"
+        >
+          <div *ngIf="lastName.errors.required">
+            Last Name is required.
+          </div>
+          <div *ngIf="lastName.errors.minlength">
+            Last Name must be at least 2 characters long.
+          </div>
+          <div *ngIf="lastName.errors.pattern">
+            Last Name can only contain letters.
+          </div>
+        </div>
+      </ion-item>
+      <ion-item>
+        <ion-label>Email:</ion-label>
+        <ion-input
+          required
+          email
+          #email="ngModel"
+          type="text"
+          [(ngModel)]="registerUserData.email"
+          name="email"
+        ></ion-input>
+        <div
+          *ngIf="email.invalid && (email.dirty || email.touched)"
+          class="alert alert-danger"
+        >
+          <div *ngIf="email.errors.email">
+            Email is required.
+          </div>
+        </div>
+      </ion-item>
+      <ion-item>
+        <ion-label>Password:</ion-label>
+        <ion-input
+          type="password"
+          [(ngModel)]="registerUserData.password"
+          name="password"
+          required
+          #password="ngModel"
+          pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
+        ></ion-input>
+        <div
+          *ngIf="password.invalid && (signupForm.submitted || password.touched)"
+          class="alert alert-danger"
+        >
+          <div *ngIf="password.errors.required">Password is required.</div>
+          <div *ngIf="password.errors.pattern">
+            Must contain at least one number and one uppercase and lowercase
+            letter, and at least 8 or more characters.
+          </div>
+        </div>
+      </ion-item>
+      <ion-item>
+        <ion-label>Re-enter Your Password:</ion-label>
+        <ion-input
+          type="password"
+          name="confirmPassword"
+          required
+          [(ngModel)]="registerUserData.confirmPassword"
+          #confirmPassword="ngModel"
+          pattern="{{ password.value }}"
+        ></ion-input>
+        <div
+          *ngIf=" confirmPassword.invalid && (signupForm.submitted || confirmPassword.touched)"
+          class="alert alert-danger"
+        >
+          <div *ngIf="confirmPassword.errors.required">
+            Confirm password is required.
+          </div>
+          <div *ngIf="confirmPassword.errors.pattern">
+            Password & Confirm Password do not match.
+          </div>
+        </div>
+      </ion-item>
+      <ion-item>
+        <ion-label>Phone Number:</ion-label>
+        <ion-input
+          type="text"
+          [(ngModel)]="registerUserData.phoneNumber"
+          name="phoneNumber"
+          #phoneNumber="ngModel"
+          required
+          pattern="^((\\+91-?)|0)?[0-9]{10}$"
+        ></ion-input>
+        <div
+          *ngIf=" phoneNumber.invalid && (signupForm.submitted || phoneNumber.touched)"
+          class="alert alert-danger"
+        >
+          <div *ngIf="phoneNumber.errors.required">
+            Phone Number is required.
+          </div>
+          <div *ngIf="phoneNumber.errors.pattern">
+            Must be a valid number and contain no spaces
+          </div>
+        </div>
+      </ion-item>
+      <ion-item>
+        <ion-label>City:</ion-label>
+        <ion-input
+          class="capitalize"
+          type="text"
+          [(ngModel)]="registerUserData.city"
+          name="city"
+          #city="ngModel"
+          required
+          minlength="3"
+          maxlength="15"
+          pattern="[a-zA-Z ]*"
+        ></ion-input>
+        <div
+          *ngIf=" city.invalid && (signupForm.submitted || city.touched)"
+          class="alert alert-danger"
+        >
+          <div *ngIf="city.errors.required">City is required.</div>
+          <div *ngIf="city.errors.pattern">Can only contain letters</div>
+        </div>
+      </ion-item>
+      <ion-item>
+        <ion-label>Address:</ion-label>
+        <ion-input
+          class="capitalize"
+          type="text"
+          [(ngModel)]="registerUserData.address"
+          name="address"
+          required
+          #address="ngModel"
+        ></ion-input>
+        <div
+          *ngIf=" address.invalid && (signupForm.submitted || address.touched)"
+          class="alert alert-danger"
+        >
+          <div *ngIf="address.errors.required">Address is required.</div>
+        </div>
+      </ion-item>
+      <ion-item>
+        <ion-label>Postal Code:</ion-label>
+        <ion-input
+          oninput="this.value = this.value.toUpperCase()"
+          type="text"
+          [(ngModel)]="registerUserData.postalCode"
+          name="postalCode"
+          required
+          #postalCode="ngModel"
+          pattern="^[A-Za-z]\d[A-Za-z][ -]?\d[A-Za-z]\d$"
+        ></ion-input>
+
+        <div
+          *ngIf=" postalCode.invalid && (signupForm.submitted || postalCode.touched)"
+          class="alert alert-danger"
+        >
+          <div *ngIf="postalCode.errors.required">Address is required.</div>
+          <div *ngIf="postalCode.errors.pattern">
+            Must be a valid Postal Code
+          </div>
+        </div>
+      </ion-item>
+    </ion-card>
+
+    <ion-button
+      (click)="dismiss()"
+      color="success"
+      id="button"
+      type="submit"
+      [disabled]="signupForm.form.invalid"
+      >Next</ion-button
+    >
+    <ion-button (click)="dismiss()">
+      Close
+    </ion-button>
+  </form>
+</ion-content>

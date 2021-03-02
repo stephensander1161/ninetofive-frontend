@@ -1,0 +1,120 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>Add a New Job</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card id="cardWidth">
+    <form (ngSubmit)="postJob()">
+      <ion-item>
+        <ion-label>Attach Seeker</ion-label>
+        <ion-select>
+          <ion-select-option *ngFor="let seeker of allSeekers"
+            >{{seeker.firstName}} {{seeker.lastName}}</ion-select-option
+          >
+        </ion-select>
+      </ion-item>
+      <ion-item>
+        <ion-label>Attach Provider</ion-label>
+        <ion-select>
+          <ion-select-option *ngFor="let provider of allProviders"
+            >{{provider.firstName}} {{provider.lastName}}</ion-select-option
+          >
+        </ion-select>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="floating">Job Type</ion-label>
+        <ion-select
+          [interfaceOptions]="typeOptions"
+          [(ngModel)]="registerJobData.type"
+          name="type"
+          placeholder="Select One"
+        >
+          <ion-select-option *ngFor="let skill of allSkills"
+            >{{skill.name}}</ion-select-option
+          >
+        </ion-select>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Sub Types</ion-label>
+        <ion-select
+          [interfaceOptions]="subTypeOptions"
+          multiple="true"
+          [(ngModel)]="registerJobData.subType"
+          name="subType"
+          interface="popover"
+          placeholder="Select All That Apply"
+        >
+          <ion-select-option *ngFor="let subSkill of allSubSkills"
+            >{{subSkill.name}}
+          </ion-select-option>
+        </ion-select>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>Estimate Task Size</ion-label>
+        <ion-select
+          placeholder="Select One"
+          [(ngModel)]="registerJobData.size"
+          name="size"
+        >
+          <ion-select-option value="f">sm-1hr</ion-select-option>
+          <ion-select-option value="f">med 2-4hrs</ion-select-option>
+          <ion-select-option value="f">lrg 4+ hrs</ion-select-option>
+        </ion-select>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">City</ion-label>
+        <ion-input [(ngModel)]="registerJobData.city" name="city"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Address</ion-label>
+        <ion-input
+          type="text"
+          [(ngModel)]="registerJobData.address"
+          name="address"
+        ></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="floating">Description of Job</ion-label>
+        <ion-input
+          type="text"
+          [(ngModel)]="registerJobData.description"
+          name="description"
+        ></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label>Priority</ion-label>
+        <ion-select
+          placeholder="Select One"
+          [(ngModel)]="registerJobData.priority"
+          name="priority"
+        >
+          <ion-select-option>Now</ion-select-option>
+          <ion-select-option>Today</ion-select-option>
+          <ion-select-option>Scheduled</ion-select-option>
+        </ion-select>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="floating">Task Time</ion-label>
+        <ion-datetime
+          placeholder="Select Time"
+          [(ngModel)]="registerJobData.time"
+          name="time"
+          displayFormat="h:mm A"
+          minuteValues="0,15,30,45"
+        ></ion-datetime>
+      </ion-item>
+
+      <ion-item>
+        <input type="file" id="myFile" name="filename" />
+      </ion-item>
+      <ion-button id="button" type="submit">Submit</ion-button>
+      <ion-button (click)="dismiss()">Close</ion-button>
+    </form>
+  </ion-card>
+</ion-content>

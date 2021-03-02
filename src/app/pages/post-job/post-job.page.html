@@ -1,0 +1,177 @@
+<ion-content>
+  <ion-title id="title">Post A Job</ion-title>
+
+  <form (ngSubmit)="createJob(jobService.currentJob)">
+    <ion-card>
+      <ion-item>
+        <ion-label position="floating">Job Type</ion-label>
+        <ion-select
+          [interfaceOptions]="typeOptions"
+          [(ngModel)]="jobService.currentJob.type"
+          name="type"
+          placeholder="Select One"
+        >
+          <ion-select-option value="plumbing">Plumbing</ion-select-option>
+          <ion-select-option value="electrical">Electrical</ion-select-option>
+          <ion-select-option value="carpentry">Carpentry</ion-select-option>
+          <ion-select-option value="landscaping">Landscaping</ion-select-option>
+          <ion-select-option value="other">Other</ion-select-option>
+        </ion-select>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="floating">Sub Types</ion-label>
+        <ion-select
+          [interfaceOptions]="subTypeOptions"
+          multiple="true"
+          [(ngModel)]="jobService.currentJob.subType"
+          name="subType"
+          interface="popover"
+          placeholder="Select All That Apply"
+        >
+          <ion-select-option value="repairs">Repairs</ion-select-option>
+          <ion-select-option value="valves">Valves</ion-select-option>
+          <ion-select-option value="clogs">Clogs</ion-select-option>
+          <ion-select-option value="outlets">Outlets</ion-select-option>
+          <ion-select-option value="fixtures">Fixtures</ion-select-option>
+          <ion-select-option value="doors">Doors</ion-select-option>
+          <ion-select-option value="trim">Trim</ion-select-option>
+          <ion-select-option value="furniture">Furniture</ion-select-option>
+          <ion-select-option value="assembly">Assembly</ion-select-option>
+          <ion-select-option value="painting">Painting</ion-select-option>
+          <ion-select-option value="mowing">Mowing</ion-select-option>
+          <ion-select-option value="shoveling">Shoveling</ion-select-option>
+          <ion-select-option value="weeds">Weeds</ion-select-option>
+        </ion-select>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="floating">Estimate Task Size</ion-label>
+        <ion-select
+          [(ngModel)]="jobService.currentJob.size"
+          name="size"
+          placeholder="Select One"
+        >
+          <ion-select-option value="f">sm-1hr</ion-select-option>
+          <ion-select-option value="f">med 2-4hrs</ion-select-option>
+          <ion-select-option value="f">lrg 4+ hrs</ion-select-option>
+        </ion-select>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">City</ion-label>
+        <ion-textarea
+          [(ngModel)]="jobService.currentJob.city"
+          name="city"
+        ></ion-textarea>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Address</ion-label>
+        <ion-input
+          type="text"
+          [(ngModel)]="jobService.currentJob.address"
+          name="address"
+        ></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="floating">Description of Job</ion-label>
+        <ion-input
+          type="text"
+          [(ngModel)]="jobService.currentJob.description"
+          name="description"
+        ></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Priority</ion-label>
+        <ion-select
+          placeholder="Select One"
+          [(ngModel)]="jobService.currentJob.priority"
+          name="priority"
+          position="floating"
+        >
+          <ion-select-option>Now</ion-select-option>
+          <ion-select-option>Today</ion-select-option>
+          <ion-select-option>Scheduled</ion-select-option>
+        </ion-select>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="floating">Task Date</ion-label>
+        <ion-datetime
+          displayFormat="MMMM DD "
+          [(ngModel)]="jobService.currentJob.date"
+          name="date"
+          placeholder="Select Date"
+        ></ion-datetime>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="floating">Task Time</ion-label>
+        <ion-datetime
+          placeholder="Select Time"
+          [(ngModel)]="jobService.currentJob.time"
+          name="time"
+          displayFormat="h:mm A"
+          minuteValues="0,15,30,45"
+        ></ion-datetime>
+      </ion-item>
+
+      <ion-item>
+        <input type="file" id="myFile" name="filename" />
+      </ion-item>
+      <ion-button color="success" id="button" type="submit">Submit</ion-button>
+    </ion-card>
+  </form>
+
+  <div id="footer">
+    <ion-grid>
+      <ion-row>
+        <ion-col id="footerTitles">
+          Find Out More
+        </ion-col>
+        <ion-col id="footerTitles">
+          Policies
+        </ion-col>
+        <ion-col id="footerTitles">
+          Connect
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col>
+          <button (click)="openFaq()" id="btnWhite">FAQ</button>
+        </ion-col>
+        <ion-col>
+          <button (click)="openTerms()" id="btnWhite">Terms of Service</button>
+        </ion-col>
+        <ion-col>
+          <button class="social-signin facebook">Connect with Facebook</button>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col>
+          <button (click)="openJob()" id="btnWhite">Post a Job</button>
+        </ion-col>
+        <ion-col>
+          <button id="btnWhite">Privacy Policy</button>
+        </ion-col>
+        <ion-col>
+          <button class="social-signin twitter">Connect with Twitter</button>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col>
+          <button (click)="openContactUs()" id="btnWhite">Contact Us</button>
+        </ion-col>
+        <ion-col>
+          <button id="btnWhite">Our Promise</button>
+        </ion-col>
+        <ion-col>
+          <button class="social-signin google">Connect with Google+</button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+</ion-content>

@@ -1,0 +1,71 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>Edit Skills</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <ion-card>
+          <ion-card-content>
+            <form #skillForm="ngForm" (ngSubmit)="createSkill(skillForm)">
+              <ion-title>Add a New Skill</ion-title>
+              <ion-input
+                type="hidden"
+                name="_id"
+                #_id="ngModel"
+                [(ngModel)]="registerSkill._id"
+              ></ion-input>
+              <ion-item>
+                <ion-label>Name:</ion-label>
+
+                <ion-input
+                  required
+                  type="text"
+                  name="name"
+                  #name="ngModel"
+                  [(ngModel)]="registerSkill.name"
+                ></ion-input>
+              </ion-item>
+              <ion-button
+                [disabled]="skillForm.form.invalid"
+                (click)="dismiss()"
+                class="button"
+                type="submit"
+                >Submit</ion-button
+              >
+              <ion-button (click)="dismiss()" class="button">Close</ion-button>
+            </form>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+      <ion-col>
+        <ion-card>
+          <ion-card-content>
+            <ion-grid>
+              <ion-row *ngFor="let skill of allSkills">
+                <ion-item
+                  >{{skill.name}}
+                  <ion-col>
+                    <ion-buttons
+                      ><ion-button (click)="onDelete(skill._id, skillForm)">
+                        <ion-icon slot="end" name="trash"></ion-icon>
+                      </ion-button>
+                      <ion-button (click)="onEdit(skill)">
+                        <ion-icon
+                          slot="end"
+                          name="pencil"
+                        ></ion-icon> </ion-button
+                    ></ion-buttons>
+                  </ion-col>
+                </ion-item>
+              </ion-row>
+            </ion-grid>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

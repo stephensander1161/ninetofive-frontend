@@ -1,0 +1,175 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons>
+      <ion-button (click)="homeClicked()">Home</ion-button>
+      <ion-button (click)="statsClicked()">Stats</ion-button>
+      <ion-button (click)="usersClicked()">Users</ion-button>
+      <ion-button (click)="servicesClicked()">Services</ion-button>
+      <ion-button (click)="paymentClicked()">Payment Information</ion-button>
+      <ion-button (click)="templatesClicked()">Templates</ion-button>
+      <ion-button (click)="outreachClicked()">Outreach</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <ion-card>
+          <ion-card-header>Current Skills Offered</ion-card-header>
+          <ion-grid>
+            <ion-row>
+              <ion-item *ngFor="let _skill of allSkills">
+                <ion-title>{{_skill.name}}</ion-title>
+              </ion-item>
+            </ion-row>
+          </ion-grid>
+          <ion-button (click)="editSkillModalClicked()">Edit Skills</ion-button>
+          <ion-button (click)="getAllSkills()">Refresh</ion-button>
+        </ion-card>
+      </ion-col>
+      <ion-col>
+        <ion-card>
+          <ion-card-header>Current Sub Skills Offered</ion-card-header>
+
+          <ion-grid>
+            <ion-row>
+              <ion-item *ngFor="let _subSkill of allSubSkills">
+                <ion-title>{{_subSkill.name}}</ion-title>
+              </ion-item>
+            </ion-row>
+          </ion-grid>
+          <ion-button (click)="editSubSkillModalClicked()"
+            >Edit Sub Skills</ion-button
+          >
+          <ion-button (click)="getAllSubSkills()">Refresh</ion-button>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-card>
+        <ion-card-title>All Tasks</ion-card-title>
+        <ion-card-content>
+          <ion-grid>
+            <ion-row *ngIf="allJobs">
+              <ion-col>
+                <ion-label>Total Number of Tasks: {{allJobs.length}}</ion-label>
+              </ion-col>
+              <ion-col>
+                <ion-label>Ongoing Tasks: {{allJobs.length}}</ion-label>
+              </ion-col>
+              <ion-col>
+                <ion-label>Completed Tasks: {{allJobs.length}}</ion-label>
+              </ion-col>
+              <ion-col>
+                <ion-label>Cancelled Tasks: {{allJobs.length}}</ion-label>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+          <ion-row>
+            <ion-col>
+              <ion-item>Job ID</ion-item>
+            </ion-col>
+            <ion-col>
+              <ion-item>Seeker ID</ion-item>
+            </ion-col>
+            <ion-col>
+              <ion-item>Provider ID</ion-item>
+            </ion-col>
+            <ion-col>
+              <ion-item>Job Type</ion-item>
+            </ion-col>
+            <ion-col>
+              <ion-item>Job Sub Type</ion-item>
+            </ion-col>
+            <ion-col>
+              <ion-item>Job City</ion-item>
+            </ion-col>
+            <ion-col>
+              <ion-item>Job Date</ion-item>
+            </ion-col>
+            <ion-col>
+              <ion-item>Job Completed</ion-item>
+            </ion-col>
+            <ion-col>
+              <ion-item>Get More Info</ion-item>
+            </ion-col>
+          </ion-row>
+          <ion-list *ngFor="let job of allJobs">
+            <ion-item>
+              <ion-label>{{job._id}}</ion-label>
+              <ion-label>{{job.seekerId}}</ion-label>
+              <ion-label>{{job.providerId}}</ion-label>
+              <ion-label>{{job.type}}</ion-label>
+              <ion-label>{{job.subType}}</ion-label>
+              <ion-label>{{job.city}}</ion-label>
+              <ion-label>{{job.date}}</ion-label>
+              <ion-label>{{job.completed}}</ion-label>
+
+              <ion-buttons>
+                <ion-button (click)="editJobModal()">
+                  Details
+                </ion-button>
+              </ion-buttons>
+            </ion-item>
+          </ion-list>
+
+          <ion-button (click)="newJobModal()">Add Job</ion-button>
+          <ion-button (click)="getAllJobs()">Refresh</ion-button>
+        </ion-card-content>
+      </ion-card>
+    </ion-row>
+  </ion-grid>
+  <div id="footer">
+    <ion-grid>
+      <ion-row>
+        <ion-col id="footerTitles">
+          Find Out More
+        </ion-col>
+        <ion-col id="footerTitles">
+          Policies
+        </ion-col>
+        <ion-col id="footerTitles">
+          Connect
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col>
+          <button (click)="openFaq()" id="btnWhite">FAQ</button>
+        </ion-col>
+        <ion-col>
+          <button (click)="openTerms()" id="btnWhite">Terms of Service</button>
+        </ion-col>
+        <ion-col>
+          <button class="social-signin facebook">Connect with Facebook</button>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col>
+          <button (click)="openJob()" id="btnWhite">Post a Job</button>
+        </ion-col>
+        <ion-col>
+          <button id="btnWhite">Privacy Policy</button>
+        </ion-col>
+        <ion-col>
+          <button class="social-signin twitter">Connect with Twitter</button>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col>
+          <button (click)="openContactUs()" id="btnWhite">Contact Us</button>
+        </ion-col>
+        <ion-col>
+          <button id="btnWhite">Our Promise</button>
+        </ion-col>
+        <ion-col>
+          <button class="social-signin google">Connect with Google+</button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+</ion-content>

@@ -1,0 +1,238 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons>
+      <ion-button (click)="homeClicked()">Home</ion-button>
+      <ion-button (click)="statsClicked()">Stats</ion-button>
+      <ion-button (click)="usersClicked()">Users</ion-button>
+      <ion-button (click)="servicesClicked()">Services</ion-button>
+      <ion-button (click)="paymentClicked()">Payment Information</ion-button>
+      <ion-button (click)="templatesClicked()">Templates</ion-button>
+      <ion-button (click)="outreachClicked()">Outreach</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <ion-card>
+    <ion-item>
+      <ion-card-title>Provider Reviews</ion-card-title>
+    </ion-item>
+
+    <ion-grid>
+      <ion-row>
+        <ion-col>
+          <ion-label>Name</ion-label>
+        </ion-col>
+        <ion-col>
+          <ion-label>Type</ion-label>
+        </ion-col>
+        <ion-col>
+          <ion-label>Content</ion-label>
+        </ion-col>
+        <ion-col>
+          <ion-label>Date Subscribed</ion-label>
+        </ion-col>
+        <ion-col>
+          <ion-label>Last Login</ion-label>
+        </ion-col>
+        <ion-col>
+          <ion-label>More Info</ion-label>
+        </ion-col>
+      </ion-row>
+
+      <ion-card-content>
+        <form #skillForm="ngForm">
+          <ion-item *ngFor="let review of allReviews">
+            <ion-label>{{review.firstName}} {{review.lastName}}</ion-label>
+            <ion-label>{{review.type}}</ion-label>
+            <ion-label>{{review.content}}</ion-label>
+            <ion-label>{{review.dateSubscribed}}</ion-label>
+            <ion-label>{{review.lastLogin}}</ion-label>
+            <ion-buttons>
+              <ion-button (click)="deleteReview(review._id, skillForm)">
+                <ion-icon slot="end" name="trash"></ion-icon>
+              </ion-button>
+
+              <ion-button (click)="seeProfileModal()">
+                See Profile
+              </ion-button>
+            </ion-buttons>
+          </ion-item>
+        </form>
+        <ion-button (click)="newReviewModal()">Add Review</ion-button>
+        <ion-button (click)="refresh()">Refresh</ion-button>
+      </ion-card-content>
+    </ion-grid>
+  </ion-card>
+
+  <ion-card>
+    <ion-item>
+      <ion-card-title>Seeker Reviews</ion-card-title>
+    </ion-item>
+
+    <ion-grid>
+      <ion-row>
+        <ion-col>
+          <ion-label>Name</ion-label>
+        </ion-col>
+        <ion-col>
+          <ion-label>Type</ion-label>
+        </ion-col>
+        <ion-col>
+          <ion-label>Content</ion-label>
+        </ion-col>
+        <ion-col>
+          <ion-label>Date Subscribed</ion-label>
+        </ion-col>
+        <ion-col>
+          <ion-label>Last Login</ion-label>
+        </ion-col>
+        <ion-col>
+          <ion-label>More Info</ion-label>
+        </ion-col>
+      </ion-row>
+
+      <ion-card-content>
+        <form #skillForm="ngForm">
+          <ion-item *ngFor="let review of allReviews">
+            <ion-label>{{review.firstName}} {{review.lastName}}</ion-label>
+            <ion-label>{{review.type}}</ion-label>
+            <ion-label>{{review.content}}</ion-label>
+            <ion-label>{{review.dateSubscribed}}</ion-label>
+            <ion-label>{{review.lastLogin}}</ion-label>
+            <ion-buttons>
+              <ion-button (click)="deleteReview(review._id, skillForm)">
+                <ion-icon slot="end" name="trash"></ion-icon>
+              </ion-button>
+
+              <ion-button (click)="seeProfileModal()">
+                See Profile
+              </ion-button>
+            </ion-buttons>
+          </ion-item>
+        </form>
+        <ion-button (click)="newReviewModal()">Add Review</ion-button>
+        <ion-button (click)="refresh()">Refresh</ion-button>
+      </ion-card-content>
+    </ion-grid>
+  </ion-card>
+
+  <ion-card color="secondary">
+    <ion-grid>
+      <ion-row>
+        <ion-col>
+          <ion-card>
+            <form #subForm="ngForm" (ngSubmit)="createSubscriber(subForm)">
+              <ion-title>Add a New Subscriber</ion-title>
+              <ion-card-content>
+                <ion-input
+                  type="hidden"
+                  name="_id"
+                  #_id="ngModel"
+                  [(ngModel)]="registerSub._id"
+                ></ion-input>
+                <ion-item>
+                  <ion-label>Email:</ion-label>
+
+                  <ion-input
+                    required
+                    type="text"
+                    name="email"
+                    #email="ngModel"
+                    [(ngModel)]="registerSub.email"
+                  ></ion-input>
+                </ion-item>
+                <ion-button
+                  [disabled]="subForm.form.invalid"
+                  class="button"
+                  type="submit"
+                  >Submit</ion-button
+                >
+              </ion-card-content>
+            </form>
+          </ion-card>
+        </ion-col>
+        <ion-col>
+          <ion-card>
+            <ion-card-content>
+              <ion-grid>
+                <ion-row>
+                  <ion-col *ngFor="let sub of allSubs">
+                    <ion-item
+                      >{{sub.email}}
+                      <ion-col>
+                        <ion-buttons
+                          ><ion-button
+                            (click)="deleteSubscriber(sub._id, subForm)"
+                          >
+                            <ion-icon slot="end" name="trash"></ion-icon>
+                          </ion-button>
+                        </ion-buttons>
+                      </ion-col>
+                    </ion-item>
+                  </ion-col>
+                </ion-row>
+                <ion-item>
+                  <ion-button (click)="emailSubsModal()"
+                    >Send New Email</ion-button
+                  >
+                </ion-item>
+              </ion-grid>
+            </ion-card-content>
+          </ion-card>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-card>
+
+  <div id="footer">
+    <ion-grid>
+      <ion-row>
+        <ion-col id="footerTitles">
+          Find Out More
+        </ion-col>
+        <ion-col id="footerTitles">
+          Policies
+        </ion-col>
+        <ion-col id="footerTitles">
+          Connect
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col>
+          <button (click)="openFaq()" id="btnWhite">FAQ</button>
+        </ion-col>
+        <ion-col>
+          <button (click)="openTerms()" id="btnWhite">Terms of Service</button>
+        </ion-col>
+        <ion-col>
+          <button class="social-signin facebook">Connect with Facebook</button>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col>
+          <button (click)="openJob()" id="btnWhite">Post a Job</button>
+        </ion-col>
+        <ion-col>
+          <button id="btnWhite">Privacy Policy</button>
+        </ion-col>
+        <ion-col>
+          <button class="social-signin twitter">Connect with Twitter</button>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col>
+          <button (click)="openContactUs()" id="btnWhite">Contact Us</button>
+        </ion-col>
+        <ion-col>
+          <button id="btnWhite">Our Promise</button>
+        </ion-col>
+        <ion-col>
+          <button class="social-signin google">Connect with Google+</button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+</ion-content>

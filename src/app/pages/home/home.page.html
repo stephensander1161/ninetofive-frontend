@@ -1,0 +1,1124 @@
+<ion-content *ngFor="let id of userId">
+  <ion-grid id="header">
+    <ion-row>
+      <ion-col>
+        <img id="profile" src="../../../assets/gallery/profile1.jpg" />
+      </ion-col>
+      <ion-col>
+        <ion-item>
+          <ion-icon (click)="providerClicked()" name="arrow-down"></ion-icon>
+          <ion-icon (click)="seekerClicked()" name="arrow-up"></ion-icon>
+
+          <ion-title>Your Active Tasks </ion-title>
+        </ion-item>
+        <form id="activeTasks" *ngFor="let job of myJobs">
+          <ion-card color="tertiary">
+            <ion-title class="providerAlertTitle">
+              {{job.providerId}} Is on the way!</ion-title
+            >
+
+            <ion-grid>
+              <ion-row>
+                <ion-col>
+                  <ion-item class="providerAlertHeaders" color="tertiary">
+                    <ion-label position="stacked" class="providerAlertHeaders"
+                      >Type</ion-label
+                    >
+                    {{job.type}}
+                  </ion-item>
+                </ion-col>
+                <ion-col>
+                  <ion-item class="providerAlertHeaders" color="tertiary">
+                    <ion-label position="stacked" class="providerAlertHeaders"
+                      >Estimate</ion-label
+                    >
+                    {{job.estimate}}
+                  </ion-item>
+                </ion-col>
+                <ion-col>
+                  <ion-item class="providerAlertHeaders" color="tertiary">
+                    <ion-label position="stacked" class="providerAlertHeaders"
+                      >Duration</ion-label
+                    >
+                    {{job.duration}}
+                  </ion-item>
+                </ion-col>
+                <ion-col>
+                  <ion-item class="providerAlertHeaders" color="tertiary">
+                    <ion-label position="stacked" class="providerAlertHeaders"
+                      >Description</ion-label
+                    >
+                    {{job.description}}
+                  </ion-item>
+                </ion-col>
+                <ion-col>
+                  <ion-item class="providerAlertHeaders" color="tertiary">
+                    <ion-label position="stacked" class="providerAlertHeaders"
+                      >Status</ion-label
+                    >
+                    {{job.status}}
+                  </ion-item>
+                </ion-col>
+              </ion-row>
+            </ion-grid>
+
+            <ion-button color="success" class="button" type="submit"
+              >Call</ion-button
+            >
+            <ion-button color="success" class="button" type="submit"
+              >Chat</ion-button
+            >
+            <ion-button color="success" class="button" type="submit"
+              >Cancel</ion-button
+            >
+            <ion-button color="success" class="button" type="cancel"
+              >See Provider Profile</ion-button
+            >
+          </ion-card>
+          <ion-row>
+            <ion-col>
+              <div *ngIf="provider">
+                <ion-title>Your Leads </ion-title>
+                <form *ngFor="let lead of myLeads" (ngSubmit)="acceptClicked()">
+                  <ion-card color="tertiary">
+                    <ion-grid>
+                      <ion-row>
+                        <ion-col>
+                          <ion-item
+                            class="providerAlertHeaders"
+                            color="tertiary"
+                          >
+                            <ion-label
+                              position="stacked"
+                              class="providerAlertHeaders"
+                              >Type</ion-label
+                            >
+                            {{lead.type}}
+                          </ion-item>
+                        </ion-col>
+                        <ion-col>
+                          <ion-item
+                            class="providerAlertHeaders"
+                            color="tertiary"
+                          >
+                            <ion-label
+                              position="stacked"
+                              class="providerAlertHeaders"
+                              >Address</ion-label
+                            >
+                            {{lead.address}}
+                          </ion-item>
+                        </ion-col>
+                        <ion-col>
+                          <ion-item
+                            class="providerAlertHeaders"
+                            color="tertiary"
+                          >
+                            <ion-label
+                              position="stacked"
+                              class="providerAlertHeaders"
+                              >Estimate</ion-label
+                            >
+                            {{lead.estimate}}
+                          </ion-item>
+                        </ion-col>
+                        <ion-col>
+                          <ion-item
+                            class="providerAlertHeaders"
+                            color="tertiary"
+                          >
+                            <ion-label
+                              position="stacked"
+                              class="providerAlertHeaders"
+                              >Duration</ion-label
+                            >
+                            {{lead.duration}}
+                          </ion-item>
+                        </ion-col>
+                        <ion-col>
+                          <ion-item
+                            class="providerAlertHeaders"
+                            color="tertiary"
+                          >
+                            <ion-label
+                              position="stacked"
+                              class="providerAlertHeaders"
+                              >Description</ion-label
+                            >
+                            {{lead.description}}
+                          </ion-item>
+                        </ion-col>
+                        <ion-col> </ion-col>
+                      </ion-row>
+                    </ion-grid>
+
+                    <ion-button color="success" id="button" type="submit"
+                      >Accept</ion-button
+                    >
+                    <ion-button color="success" id="button" type="cancel"
+                      >Reject</ion-button
+                    >
+                  </ion-card>
+                </form>
+              </div>
+            </ion-col>
+          </ion-row>
+        </form>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <ion-grid id="navbar">
+    <ion-title id="title">Welcome Back {{id.firstName}}</ion-title>
+
+    <ion-row>
+      <ion-col>
+        <ion-item>
+          <ion-buttons>
+            <ion-button (click)="profileClicked()" color="success">
+              <ion-icon slot="start" name="water"></ion-icon>
+            </ion-button>
+            <ion-button (click)="profileClicked()" color="success"
+              >Your Profile</ion-button
+            >
+          </ion-buttons>
+        </ion-item>
+      </ion-col>
+
+      <ion-col>
+        <ion-item>
+          <ion-buttons>
+            <ion-button (click)="jobsClicked()" color="success">
+              <ion-icon slot="start" name="bulb"></ion-icon>
+            </ion-button>
+            <ion-button (click)="jobsClicked()" color="success"
+              >Jobs</ion-button
+            >
+          </ion-buttons>
+        </ion-item>
+      </ion-col>
+
+      <ion-col>
+        <ion-item>
+          <ion-buttons>
+            <ion-button (click)="walletClicked()" color="success">
+              <ion-icon slot="start" name="bulb"></ion-icon>
+            </ion-button>
+            <ion-button (click)="walletClicked()" color="success"
+              >Wallet</ion-button
+            >
+          </ion-buttons>
+        </ion-item>
+      </ion-col>
+      <ion-col>
+        <ion-item>
+          <ion-buttons>
+            <ion-button (click)="historyClicked()" color="success">
+              <ion-icon slot="start" name="bulb"></ion-icon>
+            </ion-button>
+            <ion-button (click)="historyClicked()" color="success"
+              >History</ion-button
+            >
+          </ion-buttons>
+        </ion-item>
+      </ion-col>
+      <ion-col>
+        <ion-item>
+          <ion-buttons>
+            <ion-button (click)="reviewsClicked()" color="success">
+              <ion-icon slot="start" name="paper-plane"></ion-icon>
+            </ion-button>
+            <ion-button (click)="reviewsClicked()" color="success"
+              >Reviews</ion-button
+            >
+          </ion-buttons>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <div *ngIf="profile">
+    <ion-card id="cardWidth" color="secondary">
+      <ion-title id="custTitle">Your Information</ion-title>
+
+      <form
+        (ngSubmit)="updateUserOne(userService.currentUser)"
+        class="form-control"
+        #updateInfoForm="ngForm"
+      >
+        <ion-label color="success">First Name</ion-label>
+        <ion-title> {{id.firstName}}</ion-title>
+        <ion-item *ngIf="editInformation">
+          <ion-label color="success" position="floating"
+            >Edit First Name</ion-label
+          >
+          <ion-input
+            class="capitalize"
+            appTitleCase
+            [(ngModel)]="userService.currentUser.firstName"
+            name="firstName"
+            #firstName="ngModel"
+            required
+            minlength="2"
+            required
+            maxlength="15"
+            ngModel
+            pattern="[a-zA-Z ]*"
+          ></ion-input>
+          <div
+            *ngIf="firstName.invalid && (firstName.dirty || firstName.touched)"
+            class="alert alert-danger"
+          >
+            <div *ngIf="firstName.errors.required">
+              First Name is required.
+            </div>
+            <div *ngIf="firstName.errors.minlength">
+              First Name must be at least 2 characters long.
+            </div>
+            <div *ngIf="firstName.errors.pattern">
+              First Name can only contain letters.
+            </div>
+          </div>
+        </ion-item>
+
+        <ion-label color="success">Last Name</ion-label>
+        <ion-title> {{id.lastName}}</ion-title>
+        <ion-item *ngIf="editInformation">
+          <ion-label color="success" position="floating"
+            >Edit Last Name</ion-label
+          >
+          <ion-input
+            class="capitalize"
+            [(ngModel)]="userService.currentUser.lastName"
+            name="lastName"
+            required
+            minlength="2"
+            required
+            maxlength="15"
+            ngModel
+            pattern="[a-zA-Z ]*"
+            type="text"
+            #lastName="ngModel"
+          ></ion-input>
+          <div
+            *ngIf="lastName.invalid && (lastName.dirty || lastName.touched)"
+            class="alert alert-danger"
+          >
+            <div *ngIf="lastName.errors.required">
+              Last Name is required.
+            </div>
+            <div *ngIf="lastName.errors.minlength">
+              Last Name must be at least 2 characters long.
+            </div>
+            <div *ngIf="lastName.errors.pattern">
+              Last Name can only contain letters.
+            </div>
+          </div>
+        </ion-item>
+        <ion-label color="success">Phone Number</ion-label>
+        <ion-title> {{id.phoneNumber}}</ion-title>
+        <ion-item *ngIf="editInformation">
+          <ion-label color="success" position="floating"
+            >Edit Phone Number</ion-label
+          >
+          <ion-input
+            [(ngModel)]="userService.currentUser.phoneNumber"
+            name="phoneNumber"
+            #phoneNumber="ngModel"
+            required
+            pattern="^((\\+91-?)|0)?[0-9]{10}$"
+          ></ion-input>
+          <div
+            *ngIf=" phoneNumber.invalid && (updateInfoForm.submitted || phoneNumber.touched)"
+            class="alert alert-danger"
+          >
+            <div *ngIf="phoneNumber.errors.required">
+              Phone Number is required.
+            </div>
+            <div *ngIf="phoneNumber.errors.pattern">
+              Must be a valid number and contain no spaces
+            </div>
+          </div>
+        </ion-item>
+        <ion-label color="success">Email</ion-label>
+        <ion-title> {{id.email}}</ion-title>
+        <ion-item *ngIf="editInformation">
+          <ion-label color="success" position="floating">Edit Email</ion-label>
+          <ion-input
+            [(ngModel)]="userService.currentUser.email"
+            name="email"
+            required
+            email
+            #email="ngModel"
+          ></ion-input>
+          <div
+            *ngIf="email.invalid && (email.dirty || email.touched)"
+            class="alert alert-danger"
+          >
+            <div *ngIf="email.errors.email">
+              Email is required.
+            </div>
+          </div>
+        </ion-item>
+        <ion-item *ngIf="editInformation">
+          <ion-label color="success" position="floating"
+            >Edit Password</ion-label
+          >
+
+          <ion-input
+            [(ngModel)]="userService.currentUser.password"
+            name="password"
+            type="password"
+            required
+            #password="ngModel"
+            pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
+          ></ion-input>
+          <div
+            *ngIf="password.invalid && (updateInfoForm.submitted || password.touched)"
+            class="alert alert-danger"
+          >
+            <div *ngIf="password.errors.required">Password is required.</div>
+            <div *ngIf="password.errors.pattern">
+              Must contain at least one number and one uppercase and lowercase
+              letter, and at least 8 or more characters.
+            </div>
+          </div>
+        </ion-item>
+        <ion-item *ngIf="editInformation">
+          <ion-label color="success" position="floating"
+            >Retype Your Password</ion-label
+          >
+
+          <ion-input
+            [(ngModel)]="userService.currentUser.confirmPassword"
+            type="password"
+            name="confirmPassword"
+            required
+            #confirmPassword="ngModel"
+            pattern="{{ userService.currentUser.password }}"
+          ></ion-input>
+          <div
+            *ngIf=" confirmPassword.invalid && (updateInfoForm.submitted || confirmPassword.touched)"
+            class="alert alert-danger"
+          >
+            <div *ngIf="confirmPassword.errors.required">
+              Confirm password is required.
+            </div>
+            <div *ngIf="confirmPassword.errors.pattern">
+              Password & Confirm Password do not match.
+            </div>
+          </div>
+        </ion-item>
+        <ion-label color="success">City</ion-label>
+        <ion-title> {{id.city}}</ion-title>
+        <ion-item *ngIf="editInformation">
+          <ion-label color="success" position="floating">Edit City</ion-label>
+          <ion-input
+            class="capitalize"
+            [(ngModel)]="userService.currentUser.city"
+            name="city"
+            #city="ngModel"
+            required
+            minlength="3"
+            maxlength="15"
+            pattern="[a-zA-Z ]*"
+          ></ion-input>
+          <div
+            *ngIf=" city.invalid && (updateInfoForm.submitted || city.touched)"
+            class="alert alert-danger"
+          >
+            <div *ngIf="city.errors.required">City is required.</div>
+            <div *ngIf="city.errors.pattern">Can only contain letters</div>
+          </div>
+        </ion-item>
+        <ion-label color="success">Address</ion-label>
+        <ion-title> {{id.address}}</ion-title>
+        <ion-item *ngIf="editInformation">
+          <ion-label color="success" position="floating"
+            >Edit Address</ion-label
+          >
+          <ion-input
+            [(ngModel)]="userService.currentUser.address"
+            name="address"
+            required
+            #address="ngModel"
+            class="capitalize"
+          ></ion-input>
+          <div
+            *ngIf=" address.invalid && (updateInfoForm.submitted || address.touched)"
+            class="alert alert-danger"
+          >
+            <div *ngIf="address.errors.required">Address is required.</div>
+          </div>
+        </ion-item>
+        <ion-label color="success">Postal Code</ion-label>
+        <ion-title> {{id.postalCode}}</ion-title>
+        <ion-item *ngIf="editInformation">
+          <ion-label color="success" position="floating"
+            >Edit Postal Code</ion-label
+          >
+          <ion-input
+            oninput="this.value = this.value.toUpperCase()"
+            [(ngModel)]="userService.currentUser.postalCode"
+            name="postalCode"
+            required
+            #postalCode="ngModel"
+            pattern="^[A-Za-z]\d[A-Za-z][ -]?\d[A-Za-z]\d$"
+          ></ion-input>
+          <div
+            *ngIf=" postalCode.invalid && (updateInfoForm.submitted || postalCode.touched)"
+            class="alert alert-danger"
+          >
+            <div *ngIf="postalCode.errors.required">Address is required.</div>
+            <div *ngIf="postalCode.errors.pattern">
+              Must be a valid Postal Code
+            </div>
+          </div>
+        </ion-item>
+
+        <div *ngIf="provider">
+          <ion-label color="success">Biography</ion-label>
+          <ion-title> {{id.biography}}</ion-title>
+          <ion-item *ngIf="editInformation">
+            <ion-label color="success" position="floating"
+              >Edit Biography</ion-label
+            >
+            <ion-input
+              [(ngModel)]="userService.currentUser.biography"
+              name="biography"
+              required
+              #biography="ngModel"
+            ></ion-input>
+            <div
+              *ngIf=" biography.invalid && (updateInfoForm.submitted || biography.touched)"
+              class="alert alert-danger"
+            >
+              <div *ngIf="biography.errors.required">
+                Biography is required.
+              </div>
+            </div>
+          </ion-item>
+
+          <ion-label color="success">Primary Skill</ion-label>
+          <ion-title> {{id.primarySkill}}</ion-title>
+          <ion-item *ngIf="editInformation">
+            <ion-select
+              placeholder="Select One"
+              [(ngModel)]="userService.currentUser.primarySkill"
+              name="primarySkill"
+            >
+              <ion-select-option *ngFor="let _skill of skills"
+                >{{_skill.name}}</ion-select-option
+              >
+            </ion-select>
+
+            <ion-input
+              *ngIf="userService.currentUser.primarySkill === 'Other'"
+              placeholder="Please Specify"
+            ></ion-input>
+          </ion-item>
+
+          <ion-label color="success">Secondary Skill</ion-label>
+          <ion-title> {{id.secondarySkill}} </ion-title>
+          <ion-item *ngIf="editInformation">
+            <ion-select
+              placeholder="Select One"
+              [(ngModel)]="userService.currentUser.secondarySkill"
+              name="secondarySkill"
+            >
+              <ion-select-option *ngFor="let _skill of skills"
+                >{{_skill.name}}</ion-select-option
+              >
+            </ion-select>
+            <ion-input
+              *ngIf="userService.currentUser.secondarySkill === 'Other'"
+              placeholder="Please Specify"
+            ></ion-input>
+          </ion-item>
+
+          <ion-label color="success">Tertiary Skill</ion-label>
+          <ion-title>{{id.tertiarySkill}}</ion-title>
+          <ion-item *ngIf="editInformation">
+            <ion-select
+              placeholder="Select One"
+              [(ngModel)]="userService.currentUser.tertiarySkill"
+              name="tertiarySkill"
+            >
+              <ion-select-option *ngFor="let _skill of skills"
+                >{{_skill.name}}</ion-select-option
+              >
+            </ion-select>
+            <ion-input
+              *ngIf="userService.currentUser.tertiarySkill === 'Other'"
+              placeholder="Please Specify"
+            ></ion-input>
+          </ion-item>
+
+          <ion-label color="success">Experience</ion-label>
+          <ion-title>{{id.experience}}</ion-title>
+          <ion-item *ngIf="editInformation">
+            <ion-select
+              [(ngModel)]="userService.currentUser.experience"
+              name="experience"
+              placeholder="Experience"
+            >
+              <ion-select-option *ngFor="let _experience of experience">
+                {{_experience.name}}
+              </ion-select-option>
+            </ion-select>
+          </ion-item>
+        </div>
+        <ion-button (click)="editClicked(id)">Edit Your Info</ion-button>
+        <ion-button
+          [disabled]="!updateInfoForm.valid"
+          *ngIf="editInformation"
+          type="submit"
+          >Save</ion-button
+        >
+        <ion-button (click)="changePhotoClicked()" color="success"
+          >Change Profile Picture</ion-button
+        >
+        <ion-button (click)="addPhotos()" color="success"
+          >Upload Photos</ion-button
+        >
+      </form>
+    </ion-card>
+    <div *ngIf="provider">
+      <ion-title>Your Gallery</ion-title>
+      <ion-slides [options]="galleryOpts" #slides pager="true">
+        <ion-slide>
+          <ion-grid>
+            <ion-row>
+              <ion-col>
+                <img id="gallery" src="assets/gallery/carpenter1.jpg" />
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+        </ion-slide>
+
+        <ion-slide>
+          <ion-grid>
+            <ion-row>
+              <ion-col>
+                <img id="gallery" src="assets/gallery/carpenter2.jpg" />
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+        </ion-slide>
+
+        <ion-slide>
+          <ion-grid>
+            <ion-row>
+              <ion-col>
+                <img id="gallery" src="assets/gallery/electrician2.jpeg" />
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+        </ion-slide>
+        <ion-slide>
+          <ion-grid>
+            <ion-row>
+              <ion-col>
+                <img id="gallery" src="assets/gallery/gardener1.jpg" />
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+        </ion-slide>
+        <ion-slide>
+          <ion-grid>
+            <ion-row>
+              <ion-col>
+                <img id="gallery" src="assets/gallery/plumber1.jpg" />
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+        </ion-slide>
+        <ion-slide>
+          <ion-grid>
+            <ion-row>
+              <ion-col>
+                <img id="gallery" src="assets/gallery/plumber2.jpg" />
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+        </ion-slide>
+        <ion-slide>
+          <ion-grid>
+            <ion-row>
+              <ion-col>
+                <img id="gallery" src="assets/gallery/plumber3.jpg" />
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+        </ion-slide>
+        <ion-slide>
+          <ion-grid>
+            <ion-row>
+              <ion-col>
+                <img id="gallery" src="assets/gallery/cutgrass1.jfif" />
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+        </ion-slide>
+      </ion-slides>
+    </div>
+  </div>
+
+  <div *ngIf="jobs">
+    <ion-card id="cardWidth" color="secondary">
+      <form (ngSubmit)="postJob()">
+        <ion-title id="title">Post A Job</ion-title>
+
+        <ion-item>
+          <ion-label position="floating">Job Type</ion-label>
+          <ion-select
+            [interfaceOptions]="typeOptions"
+            [(ngModel)]="registerJobData.type"
+            name="type"
+            placeholder="Select One"
+          >
+            <ion-select-option *ngFor="let skill of skills"
+              >{{skill.name}}</ion-select-option
+            >
+          </ion-select>
+        </ion-item>
+        <ion-item>
+          <ion-label position="floating">Sub Types</ion-label>
+          <ion-select
+            [interfaceOptions]="subTypeOptions"
+            multiple="true"
+            [(ngModel)]="registerJobData.subType"
+            name="subType"
+            interface="popover"
+            placeholder="Select All That Apply"
+          >
+            <ion-select-option *ngFor="let subSkill of allSubSkills"
+              >{{subSkill.name}}</ion-select-option
+            >
+          </ion-select>
+        </ion-item>
+
+        <ion-item>
+          <ion-label>Estimate Task Size</ion-label>
+          <ion-select
+            placeholder="Select One"
+            [(ngModel)]="registerJobData.size"
+            name="size"
+          >
+            <ion-select-option value="f">sm-1hr</ion-select-option>
+            <ion-select-option value="f">med 2-4hrs</ion-select-option>
+            <ion-select-option value="f">lrg 4+ hrs</ion-select-option>
+          </ion-select>
+        </ion-item>
+        <ion-item>
+          <ion-label position="floating">City</ion-label>
+          <ion-input [(ngModel)]="registerJobData.city" name="city"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="floating">Address</ion-label>
+          <ion-input
+            type="text"
+            [(ngModel)]="registerJobData.address"
+            name="address"
+          ></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label position="floating">Description of Job</ion-label>
+          <ion-input
+            type="text"
+            [(ngModel)]="registerJobData.description"
+            name="description"
+          ></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label>Priority</ion-label>
+          <ion-select
+            placeholder="Select One"
+            [(ngModel)]="registerJobData.priority"
+            name="priority"
+          >
+            <ion-select-option>Now</ion-select-option>
+            <ion-select-option>Today</ion-select-option>
+            <ion-select-option>Scheduled</ion-select-option>
+          </ion-select>
+        </ion-item>
+
+        <ion-item>
+          <ion-label position="floating">Task Time</ion-label>
+          <ion-datetime
+            placeholder="Select Time"
+            [(ngModel)]="registerJobData.time"
+            name="time"
+            displayFormat="h:mm A"
+            minuteValues="0,15,30,45"
+          ></ion-datetime>
+        </ion-item>
+
+        <ion-item>
+          <input type="file" id="myFile" name="filename" />
+        </ion-item>
+        <ion-button
+          color="success"
+          id="button"
+          (click)="submitClicked()"
+          type="submit"
+          >Submit</ion-button
+        >
+      </form>
+    </ion-card>
+    <ion-card id="cardWidth" color="secondary">
+      <ion-title>Browse Jobs</ion-title>
+
+      <ion-slides pager="true" [options]="slideOpts">
+        <ion-slide id="searchJobs" *ngFor="let job of allJobs">
+          <form (ngSubmit)="claimJob()">
+            <ion-card>
+              <ion-title>JOB {{job._id}}</ion-title>
+
+              <ion-label>Type</ion-label>
+              <ion-item>{{job.type}}</ion-item>
+
+              <ion-label>City</ion-label>
+              <ion-item>{{job.city}}</ion-item>
+
+              <ion-label>Address</ion-label>
+              <ion-item>{{job.address}}</ion-item>
+
+              <ion-label>Estimate</ion-label>
+              <ion-item>{{job.estimate}}</ion-item>
+
+              <ion-label>Duration</ion-label>
+              <ion-item>{{job.time}}</ion-item>
+
+              <ion-label>Description</ion-label>
+              <ion-item>{{job.description}}</ion-item>
+
+              <ion-button color="success" id="button" type="submit"
+                >Claim</ion-button
+              >
+            </ion-card>
+          </form>
+        </ion-slide>
+      </ion-slides>
+    </ion-card>
+
+    <ion-card id="cardWidth">
+      <ion-title>Cancel One of Your Jobs</ion-title>
+      <ion-select placeholder="jobs tied to your account will show up here">
+        <ion-select-option>populate your jobs here</ion-select-option>
+      </ion-select>
+      <ion-button (click)="cancelJob()">Cancel</ion-button>
+    </ion-card>
+  </div>
+
+  <div *ngIf="wallet">
+    <ion-button id="payProviderBtn" (click)="payProviderClicked()"
+      >Pay Provider</ion-button
+    >
+    <ion-card id="cardWidth" color="secondary">
+      <ion-title>Wallet Information</ion-title>
+
+      <ion-list inset="true">
+        <ion-title>Payments Received</ion-title>
+
+        <ion-item>
+          <ion-label>{{"Payment.Date"}}</ion-label>
+        </ion-item>
+        <ion-item>
+          <ion-label>{{"Payment.Date"}}</ion-label>
+        </ion-item>
+        <ion-item>
+          <ion-label>{{"Payment.Date"}}</ion-label>
+        </ion-item>
+      </ion-list>
+
+      <ion-list inset="true">
+        <ion-title>Payments Pending</ion-title>
+
+        <ion-item>
+          <ion-label>{{"Payment.Date"}}</ion-label>
+        </ion-item>
+        <ion-item>
+          <ion-label>{{"Payment.Date"}}</ion-label>
+        </ion-item>
+        <ion-item>
+          <ion-label>{{"Payment.Date"}}</ion-label>
+        </ion-item>
+      </ion-list>
+
+      <ion-list inset="true">
+        <ion-title>Payments Cancelled</ion-title>
+
+        <ion-item>
+          <ion-label>{{"Payment.Date"}}</ion-label>
+        </ion-item>
+        <ion-item>
+          <ion-label>{{"Payment.Date"}}</ion-label>
+        </ion-item>
+        <ion-item>
+          <ion-label>{{"Payment.Date"}}</ion-label>
+        </ion-item>
+      </ion-list>
+    </ion-card>
+  </div>
+
+  <div *ngIf="history">
+    <ion-card id="cardWidth" color="secondary">
+      <ion-title> History</ion-title>
+      <ion-list inset="true">
+        <ion-title>Ongoing Tasks</ion-title>
+
+        <ion-item>
+          <ion-label>cut grass</ion-label>
+        </ion-item>
+
+        <ion-item>
+          <ion-label>build chair</ion-label>
+        </ion-item>
+      </ion-list>
+      <ion-list inset="true">
+        <ion-title>Completed Tasks</ion-title>
+
+        <ion-item>
+          <ion-label>paint my fence</ion-label>
+        </ion-item>
+
+        <ion-item>
+          <ion-label>clean my house</ion-label>
+        </ion-item>
+
+        <ion-item>
+          <ion-label>build me a hammock</ion-label>
+        </ion-item>
+      </ion-list>
+
+      <ion-list inset="true">
+        <ion-title>Cancelled Tasks</ion-title>
+
+        <ion-item>
+          <ion-label>walk my dog</ion-label>
+        </ion-item>
+      </ion-list>
+    </ion-card>
+  </div>
+
+  <div *ngIf="reviews">
+    <ion-grid>
+      <ion-row>
+        <ion-card id="cardWidth" color="secondary">
+          <form (ngSubmit)="postReview()">
+            <ion-title> Reviews</ion-title>
+            <ion-title>Write a Review</ion-title>
+
+            <ion-item *ngIf="!provider">
+              <ion-label position="floating">Select Seeker</ion-label>
+              <ion-select
+                [(ngModel)]="registerReviewData.firstName"
+                name="firstName"
+              >
+                <ion-select-option *ngFor="let seeker of allSeekers"
+                  >{{seeker.firstName}} {{seeker.lastName}}</ion-select-option
+                >
+              </ion-select>
+            </ion-item>
+            <ion-item *ngIf="provider">
+              <ion-label position="floating">Select Provider</ion-label>
+              <ion-select
+                [(ngModel)]="registerReviewData.firstName"
+                name="firstName"
+              >
+                <ion-select-option *ngFor="let provider of allProviders"
+                  >{{provider.firstName}}
+                  {{provider.lastName}}</ion-select-option
+                >
+              </ion-select>
+            </ion-item>
+            <ion-item
+              class="rating"
+              (mouseenter)="isHover = true"
+              (mouseleave)="isHover = false"
+            >
+              <span [ngClass]="{'full-star': rating >= 1 && !isHover}">☆</span>
+              <span [ngClass]="{'full-star': rating >= 2 && !isHover}">☆</span>
+              <span [ngClass]="{'full-star': rating >= 3 && !isHover}">☆</span>
+              <span [ngClass]="{'full-star': rating >= 4 && !isHover}">☆</span>
+              <span [ngClass]="{'full-star': rating >= 5 && !isHover}">☆</span>
+            </ion-item>
+
+            <ion-item>
+              <ion-label>Write Your Review</ion-label>
+              <ion-textarea
+                required
+                [(ngModel)]="registerReviewData.content"
+                name="content"
+                rows="10"
+                cols="50"
+              >
+              </ion-textarea>
+            </ion-item>
+            <ion-item>
+              <ion-buttons>
+                <ion-button type="submit">Submit</ion-button>
+                <ion-button>Cancel</ion-button>
+              </ion-buttons>
+            </ion-item>
+          </form>
+        </ion-card>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <ion-card>
+            <ion-item>
+              <ion-card-title>Reviews About You</ion-card-title>
+            </ion-item>
+
+            <ion-grid>
+              <ion-row>
+                <ion-col>
+                  <ion-label>Name</ion-label>
+                </ion-col>
+                <ion-col>
+                  <ion-label>Type</ion-label>
+                </ion-col>
+                <ion-col>
+                  <ion-label>Content</ion-label>
+                </ion-col>
+                <ion-col>
+                  <ion-label>Rating</ion-label>
+                </ion-col>
+
+                <ion-col>
+                  <ion-label>More Info</ion-label>
+                </ion-col>
+              </ion-row>
+
+              <ion-card-content>
+                <form #skillForm="ngForm">
+                  <ion-item *ngFor="let review of allReviews">
+                    <ion-label
+                      >{{review.firstName}} {{review.lastName}}</ion-label
+                    >
+                    <ion-label>{{review.type}}</ion-label>
+                    <ion-label>{{review.content}}</ion-label>
+                    <ion-label>{{review.rating}}</ion-label>
+
+                    <ion-buttons>
+                      <ion-button (click)="seeProfileModal()">
+                        See Their Profile
+                      </ion-button>
+                    </ion-buttons>
+                  </ion-item>
+                </form>
+                <ion-button (click)="refresh()">Refresh</ion-button>
+              </ion-card-content>
+            </ion-grid></ion-card
+          >
+        </ion-col>
+        <ion-col>
+          <ion-card>
+            <ion-item>
+              <ion-card-title>Your Reviews About Others</ion-card-title>
+            </ion-item>
+
+            <ion-grid>
+              <ion-row>
+                <ion-col>
+                  <ion-label>Name</ion-label>
+                </ion-col>
+                <ion-col>
+                  <ion-label>Type</ion-label>
+                </ion-col>
+                <ion-col>
+                  <ion-label>Content</ion-label>
+                </ion-col>
+                <ion-col>
+                  <ion-label>Rating</ion-label>
+                </ion-col>
+
+                <ion-col>
+                  <ion-label>More Info</ion-label>
+                </ion-col>
+              </ion-row>
+
+              <ion-card-content>
+                <form #skillForm="ngForm">
+                  <ion-item *ngFor="let review of allReviews">
+                    <ion-label
+                      >{{review.firstName}} {{review.lastName}}</ion-label
+                    >
+                    <ion-label>{{review.type}}</ion-label>
+                    <ion-label>{{review.content}}</ion-label>
+                    <ion-label>{{review.rating}}</ion-label>
+
+                    <ion-buttons>
+                      <ion-button (click)="deleteReview(review._id, skillForm)">
+                        <ion-icon slot="end" name="trash"></ion-icon>
+                      </ion-button>
+
+                      <ion-button (click)="seeProfileModal()">
+                        See Their Profile
+                      </ion-button>
+                    </ion-buttons>
+                  </ion-item>
+                </form>
+                <ion-button (click)="refresh()">Refresh</ion-button>
+              </ion-card-content>
+            </ion-grid></ion-card
+          >
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+  <div id="footer" color="primary">
+    <ion-grid>
+      <ion-row>
+        <ion-col id="footerTitles">
+          Find Out More
+        </ion-col>
+        <ion-col id="footerTitles">
+          Policies
+        </ion-col>
+        <ion-col id="footerTitles">
+          Connect
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col>
+          <button (click)="openFaq()" id="btnWhite">FAQ</button>
+        </ion-col>
+        <ion-col>
+          <button (click)="openTerms()" id="btnWhite">Terms of Service</button>
+        </ion-col>
+        <ion-col>
+          <button class="social-signin facebook">Connect with Facebook</button>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col>
+          <button (click)="openJob()" id="btnWhite">Post a Job</button>
+        </ion-col>
+        <ion-col>
+          <button id="btnWhite">Privacy Policy</button>
+        </ion-col>
+        <ion-col>
+          <button class="social-signin twitter">Connect with Twitter</button>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col>
+          <button (click)="openContactUs()" id="btnWhite">Contact Us</button>
+        </ion-col>
+        <ion-col>
+          <button id="btnWhite">Our Promise</button>
+        </ion-col>
+        <ion-col>
+          <button class="social-signin google">Connect with Google+</button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+</ion-content>

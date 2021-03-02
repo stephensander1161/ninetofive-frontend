@@ -1,0 +1,318 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons>
+      <ion-button (click)="homeClicked()">Home</ion-button>
+      <ion-button (click)="statsClicked()">Stats</ion-button>
+      <ion-button (click)="usersClicked()">Users</ion-button>
+      <ion-button (click)="servicesClicked()">Services</ion-button>
+      <ion-button (click)="paymentClicked()">Payment Information</ion-button>
+      <ion-button (click)="templatesClicked()">Templates</ion-button>
+      <ion-button (click)="outreachClicked()">Outreach</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card>
+    <ion-card-title>Theme Generator</ion-card-title>
+    <ion-button color="light" (click)="oneTheme()">One Theme</ion-button>
+    <ion-button color="light" (click)="twoTheme()">Two Theme</ion-button>
+    <ion-button color="light" (click)="threeTheme()">Three Theme</ion-button>
+    <ion-button color="light" (click)="fourTheme()">Four Theme</ion-button>
+    <ion-button color="light" (click)="fiveTheme()">Five Theme</ion-button>
+    <ion-button color="light" (click)="sixTheme()">Six Theme</ion-button>
+    <ion-button color="light" (click)="sevenTheme()">Seven Theme</ion-button>
+
+    <ion-button (click)="defaultTheme()">Default Theme</ion-button>
+    <ion-grid>
+      <ion-row>
+        <ion-col>
+          <ion-card color="primary">
+            <ion-card-header>Primary</ion-card-header>
+            <ion-card-content>
+              <ion-textarea
+                class="dummyText"
+                readonly
+                rows="8"
+                cols="20"
+                [(ngModel)]="moreAbout"
+                name="moreAbout"
+              >
+              </ion-textarea>
+            </ion-card-content>
+          </ion-card>
+        </ion-col>
+        <ion-col>
+          <ion-card color="secondary">
+            <ion-card-header>Secondary</ion-card-header>
+            <ion-card-content>
+              <ion-textarea
+                class="dummyText"
+                readonly
+                rows="8"
+                cols="20"
+                [(ngModel)]="moreAbout"
+                name="moreAbout"
+              >
+              </ion-textarea>
+            </ion-card-content>
+          </ion-card>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <ion-card color="tertiary">
+            <ion-card-header>Tertiary</ion-card-header>
+            <ion-card-content>
+              <ion-textarea
+                class="dummyText"
+                readonly
+                rows="8"
+                cols="20"
+                [(ngModel)]="moreAbout"
+                name="moreAbout"
+              >
+              </ion-textarea>
+            </ion-card-content>
+          </ion-card>
+        </ion-col>
+        <ion-col>
+          <ion-card color="success">
+            <ion-card-header>Success</ion-card-header>
+            <ion-card-content>
+              <ion-textarea
+                id="dummyText"
+                readonly
+                rows="8"
+                cols="20"
+                [(ngModel)]="moreAbout"
+                name="moreAbout"
+              >
+              </ion-textarea>
+            </ion-card-content>
+          </ion-card>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-card>
+
+  <ion-row>
+    <ion-card>
+      <ion-card-header>
+        <ion-card-title>Edit More About 9ine to 5ive</ion-card-title>
+      </ion-card-header>
+      <ion-textarea [(ngModel)]="about.content" rows="15" cols="100">
+      </ion-textarea>
+      <ion-button (click)="createAndUpdateAbout(about)">Save</ion-button>
+    </ion-card>
+    <ion-card color="secondary">
+      <ion-card-title>Edit How It Works</ion-card-title>
+
+      <ion-grid>
+        <ion-row>
+          <ion-card>
+            <form #hiwForm="ngForm" (ngSubmit)="createHowItWork(hiwForm)">
+              <ion-title>Add a New List Item</ion-title>
+              <ion-card-content>
+                <ion-input
+                  type="hidden"
+                  name="_id"
+                  #_id="ngModel"
+                  [(ngModel)]="registerHiw._id"
+                ></ion-input>
+                <ion-item>
+                  <ion-label>How It Works:</ion-label>
+
+                  <ion-input
+                    required
+                    type="text"
+                    name="content"
+                    #content="ngModel"
+                    [(ngModel)]="registerHiw.content"
+                  ></ion-input>
+                </ion-item>
+                <ion-button
+                  [disabled]="hiwForm.form.invalid"
+                  class="button"
+                  type="submit"
+                  >Submit</ion-button
+                >
+              </ion-card-content>
+            </form>
+          </ion-card>
+          <ion-row>
+            <ion-card>
+              <ion-card-content>
+                <ion-grid>
+                  <ion-row>
+                    <ion-col *ngFor="let hiw of allHowItWorks">
+                      <ion-item>
+                        <ion-button class="editBtn">Edit</ion-button>
+                        {{hiw.content}}
+                        <ion-col>
+                          <ion-buttons
+                            ><ion-button (click)="deleteHiw(hiw._id, hiwForm)">
+                              <ion-icon slot="end" name="trash"></ion-icon>
+                            </ion-button>
+                          </ion-buttons>
+                        </ion-col>
+                      </ion-item>
+                    </ion-col>
+                  </ion-row>
+                  <ion-item> </ion-item>
+                </ion-grid>
+              </ion-card-content>
+            </ion-card>
+          </ion-row>
+        </ion-row>
+      </ion-grid>
+    </ion-card>
+    <ion-card color="secondary">
+      <ion-card-title>Edit Guarantee</ion-card-title>
+
+      <ion-grid>
+        <ion-row>
+          <ion-col>
+            <ion-card>
+              <form
+                #guaranteeForm="ngForm"
+                (ngSubmit)="createGuarantee(guaranteeForm)"
+              >
+                <ion-title>Add a New List Item</ion-title>
+                <ion-card-content>
+                  <ion-input
+                    type="hidden"
+                    name="_id"
+                    #_id="ngModel"
+                    [(ngModel)]="registerGuarantee._id"
+                  ></ion-input>
+                  <ion-item>
+                    <ion-label>Guarantee:</ion-label>
+
+                    <ion-input
+                      required
+                      type="text"
+                      name="content"
+                      #content="ngModel"
+                      [(ngModel)]="registerGuarantee.content"
+                    ></ion-input>
+                  </ion-item>
+                  <ion-button
+                    [disabled]="guaranteeForm.form.invalid"
+                    class="button"
+                    type="submit"
+                    >Submit</ion-button
+                  >
+                </ion-card-content>
+              </form>
+            </ion-card>
+          </ion-col>
+          <ion-col>
+            <ion-card>
+              <ion-card-content>
+                <ion-grid>
+                  <ion-row>
+                    <ion-col>
+                      <ion-item *ngFor="let guarantee of allGuarantees">
+                        <ion-button class="editBtn">Edit</ion-button>
+                        {{guarantee.content}}
+                        <ion-col>
+                          <ion-buttons
+                            ><ion-button
+                              (click)="deleteGuarantee(guarantee._id, guaranteeForm)"
+                            >
+                              <ion-icon slot="end" name="trash"></ion-icon>
+                            </ion-button>
+                          </ion-buttons>
+                        </ion-col>
+                      </ion-item>
+                    </ion-col>
+                  </ion-row>
+                  <ion-item> </ion-item>
+                </ion-grid>
+              </ion-card-content>
+            </ion-card>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-card>
+  </ion-row>
+
+  <ion-card id="test">
+    <ion-card-title> Storage Test</ion-card-title>
+    <ion-item-sliding>
+      <ion-item>
+        <ion-label text-wrap>
+          <h3>Get Item</h3>
+          <ion-button (click)="getTheValue()">
+            Get
+          </ion-button>
+        </ion-label>
+
+        <ion-label text-wrap>
+          <h3>Set Item</h3>
+          <ion-button (click)="setTheValue()">
+            Set
+          </ion-button>
+        </ion-label>
+      </ion-item>
+
+      <ion-item-options side="end">
+        <ion-item-option color="secondary">Update</ion-item-option>
+        <ion-item-option color="danger">Update</ion-item-option>
+      </ion-item-options>
+    </ion-item-sliding>
+  </ion-card>
+
+  <div id="footer">
+    <ion-grid>
+      <ion-row>
+        <ion-col id="footerTitles">
+          Find Out More
+        </ion-col>
+        <ion-col id="footerTitles">
+          Policies
+        </ion-col>
+        <ion-col id="footerTitles">
+          Connect
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col>
+          <button (click)="openFaq()" id="btnWhite">FAQ</button>
+        </ion-col>
+        <ion-col>
+          <button (click)="openTerms()" id="btnWhite">Terms of Service</button>
+        </ion-col>
+        <ion-col>
+          <button class="social-signin facebook">Connect with Facebook</button>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col>
+          <button (click)="openJob()" id="btnWhite">Post a Job</button>
+        </ion-col>
+        <ion-col>
+          <button id="btnWhite">Privacy Policy</button>
+        </ion-col>
+        <ion-col>
+          <button class="social-signin twitter">Connect with Twitter</button>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col>
+          <button (click)="openContactUs()" id="btnWhite">Contact Us</button>
+        </ion-col>
+        <ion-col>
+          <button id="btnWhite">Our Promise</button>
+        </ion-col>
+        <ion-col>
+          <button class="social-signin google">Connect with Google+</button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+</ion-content>

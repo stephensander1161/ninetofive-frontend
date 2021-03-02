@@ -1,0 +1,285 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons>
+      <ion-button (click)="homeClicked()">Home</ion-button>
+      <ion-button (click)="statsClicked()">Stats</ion-button>
+      <ion-button (click)="usersClicked()">Users</ion-button>
+      <ion-button (click)="servicesClicked()">Services</ion-button>
+      <ion-button (click)="paymentClicked()">Payment Information</ion-button>
+      <ion-button (click)="templatesClicked()">Templates</ion-button>
+      <ion-button (click)="outreachClicked()">Outreach</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid>
+    <ion-row>
+      <ion-title id="title">Admin Home Page</ion-title>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-item>
+          <ion-buttons>
+            <ion-button (click)="statsClicked()" color="primary">
+              <ion-icon slot="start" name="water"></ion-icon>
+            </ion-button>
+            <ion-button (click)="statsClicked()" color="primary"
+              >Site Statistics</ion-button
+            >
+          </ion-buttons>
+        </ion-item>
+        <ion-card id="graph">
+          <canvas
+            baseChart
+            [datasets]="chartData"
+            [labels]="chartLabels"
+            [chartType]="chartType"
+            [colors]="chartColors"
+            [legend]="showLegend"
+            [options]="chartOptions"
+          >
+          </canvas>
+
+          <ion-card>
+            <ion-card-header>
+              <ion-card-title>Settings</ion-card-title>
+            </ion-card-header>
+            <ion-card-content>
+              <ion-item>
+                <ion-label>Line Chart</ion-label>
+                <ion-toggle
+                  (ionChange)="typeChanged($event)"
+                  checked
+                ></ion-toggle>
+              </ion-item>
+              <ion-item>
+                <ion-label>Show Legend</ion-label>
+                <ion-toggle [(ngModel)]="showLegend"> </ion-toggle>
+              </ion-item>
+              <ion-item>
+                <ion-label>Background Color</ion-label>
+                <ion-input
+                  type="text"
+                  [(ngModel)]="chartColors[0].backgroundColor"
+                ></ion-input>
+              </ion-item>
+            </ion-card-content>
+          </ion-card>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col>
+        <ion-item>
+          <ion-buttons>
+            <ion-button (click)="usersClicked()" color="primary">
+              <ion-icon slot="start" name="water"></ion-icon>
+            </ion-button>
+            <ion-button (click)="usersClicked()" color="primary">
+              Users</ion-button
+            >
+          </ion-buttons>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-card class="newUser">
+          <ion-card-header>
+            <ion-card-title>New Users</ion-card-title>
+          </ion-card-header>
+          <ion-slides pager="true" [options]="slideOpts">
+            <ion-slide *ngFor="let user of newUsers ">
+              <ion-grid>
+                <ion-row>
+                  <ion-col>
+                    <ion-title class="newUserTitle">
+                      {{user.firstName}} {{user.lastName}}
+                    </ion-title>
+                  </ion-col>
+                </ion-row>
+                <ion-label class="newUserTitle">{{user.city}}</ion-label>
+                <ion-row>
+                  <ion-buttons>
+                    <ion-button class="newUserButton">See Profile</ion-button>
+                  </ion-buttons>
+                </ion-row>
+              </ion-grid>
+            </ion-slide>
+          </ion-slides>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col>
+        <ion-item>
+          <ion-buttons>
+            <ion-button (click)="servicesClicked()" color="primary">
+              <ion-icon slot="start" name="water"></ion-icon>
+            </ion-button>
+            <ion-button (click)="servicesClicked()" color="primary">
+              Services</ion-button
+            >
+          </ion-buttons>
+        </ion-item>
+        <ion-card>
+          <ion-card-header>Current Skills</ion-card-header>
+          <ion-item>
+            <ion-label *ngFor="let skill of allSkills"
+              >{{skill.name}}</ion-label
+            >
+          </ion-item>
+
+          <ion-card-header>Current Sub Skills</ion-card-header>
+
+          <ion-item>
+            <ion-label *ngFor="let subSkill of allSubSkills"
+              >{{subSkill.name}}</ion-label
+            >
+          </ion-item>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col>
+        <ion-item>
+          <ion-buttons>
+            <ion-button (click)="paymentClicked()" color="primary">
+              <ion-icon slot="start" name="water"></ion-icon>
+            </ion-button>
+            <ion-button (click)="paymentClicked()" color="primary">
+              Payment Information</ion-button
+            >
+          </ion-buttons>
+        </ion-item>
+        <ion-card>
+          <ion-card-header>Earnings Reports</ion-card-header>
+          <ion-item>
+            <ion-label position="floating">Select Skill</ion-label>
+            <ion-select interface="popover">
+              <ion-select-option *ngFor="let _skill of allSkills"
+                >{{_skill.name}}</ion-select-option
+              >
+            </ion-select>
+          </ion-item>
+          <ion-item>
+            <ion-label position="floating">Select City </ion-label>
+            <ion-select interface="popover">
+              <ion-select-option>Calgary</ion-select-option>
+            </ion-select>
+          </ion-item>
+          <ion-item>
+            <ion-label position="floating">From:</ion-label>
+            <ion-datetime displayFormat="MM/DD/YYYY"></ion-datetime>
+            <ion-label position="floating">To</ion-label>
+            <ion-datetime displayFormat="MM/DD/YYYY"></ion-datetime>
+          </ion-item>
+          <ion-button (click)="skillReportModalClicked()"
+            >Generate Report</ion-button
+          >
+        </ion-card>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col>
+        <ion-item>
+          <ion-buttons>
+            <ion-button (click)="templatesClicked()" color="primary">
+              <ion-icon slot="start" name="water"></ion-icon>
+            </ion-button>
+            <ion-button (click)="templatesClicked()" color="primary">
+              Templates</ion-button
+            >
+          </ion-buttons>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+
+    <ion-item>
+      <ion-row>
+        <ion-buttons>
+          <ion-button (click)="outreachClicked()" color="primary">
+            <ion-icon slot="start" name="water"></ion-icon>
+          </ion-button>
+          <ion-button (click)="outreachClicked()" color="primary">
+            Outreach</ion-button
+          >
+        </ion-buttons>
+      </ion-row>
+    </ion-item>
+    <ion-row>
+      <ion-card>
+        <ion-card-header>Subscriber List</ion-card-header>
+        <ion-card-content>
+          <ion-grid>
+            <ion-row>
+              <ion-col *ngFor="let sub of allSubs">
+                <ion-list>{{sub.email}} </ion-list>
+              </ion-col>
+            </ion-row>
+            <ion-item>
+              <ion-button (click)="emailSubsModal()">Send New Email</ion-button>
+            </ion-item>
+          </ion-grid>
+        </ion-card-content>
+      </ion-card>
+    </ion-row>
+  </ion-grid>
+
+  <div id="footer">
+    <ion-grid>
+      <ion-row>
+        <ion-col id="footerTitles">
+          Find Out More
+        </ion-col>
+        <ion-col id="footerTitles">
+          Policies
+        </ion-col>
+        <ion-col id="footerTitles">
+          Connect
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col>
+          <button (click)="openFaq()" id="btnWhite">FAQ</button>
+        </ion-col>
+        <ion-col>
+          <button (click)="openTerms()" id="btnWhite">Terms of Service</button>
+        </ion-col>
+        <ion-col>
+          <button class="social-signin facebook">Connect with Facebook</button>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col>
+          <button (click)="openJob()" id="btnWhite">Post a Job</button>
+        </ion-col>
+        <ion-col>
+          <button id="btnWhite">Privacy Policy</button>
+        </ion-col>
+        <ion-col>
+          <button class="social-signin twitter">Connect with Twitter</button>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col>
+          <button (click)="openContactUs()" id="btnWhite">Contact Us</button>
+        </ion-col>
+        <ion-col>
+          <button id="btnWhite">Our Promise</button>
+        </ion-col>
+        <ion-col>
+          <button class="social-signin google">Connect with Google+</button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+</ion-content>

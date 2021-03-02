@@ -1,0 +1,112 @@
+ion-label {
+  color: black;
+}
+
+#header {
+  margin-top: 220px;
+}
+
+#payProviderBtn {
+  margin-top: 30px;
+  margin-left: 250px;
+  margin-bottom: 30px;
+}
+
+ion-title {
+  padding: 10px;
+  color: black;
+  padding-left: 15px;
+}
+
+#profile {
+  position: relative;
+  margin-top: 10%;
+  height: 700px;
+  width: 700px;
+  border-radius: 95%;
+  padding: 25px;
+}
+
+#activeTasks {
+  margin-right: 20px;
+}
+
+ion-card {
+  padding: 5px;
+}
+
+.providerAlertTitle {
+  color: #ffffff;
+  padding: 10px;
+  font-size: 25px;
+}
+
+.providerAlertHeaders {
+  position: relative;
+  padding: 1px;
+  font-size: 19px;
+  margin-bottom: 15px;
+  color: #ffffff;
+}
+
+#cardWidth {
+  width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 50px;
+}
+
+ion-label {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#footer {
+  margin-top: 100px;
+}
+
+ion-slides {
+  padding: 30px;
+}
+
+#gallery {
+  height: 250px;
+  width: 250px;
+  border-radius: 5px;
+}
+
+.capitalize {
+  text-transform: capitalize;
+}
+
+.fa-star,
+.fa-star-half-empty,
+.fa-star-o {
+  color: orange;
+}
+.book-rating {
+  min-width: 100px;
+}
+
+.full-star:before {
+  content: "\2605";
+  position: absolute;
+}
+
+.rating > span:hover:before,
+.rating > span:hover ~ span:before {
+  content: "\2605";
+  position: absolute;
+}
+
+.rating > span {
+  display: inline-block;
+  position: relative;
+  width: 1.1em;
+  font-size: 40px;
+  color: #f2af01;
+}
+
+.review-description {
+  margin-bottom: 50px;
+}

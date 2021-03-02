@@ -1,0 +1,172 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons>
+      <ion-button (click)="homeClicked()">Home</ion-button>
+      <ion-button (click)="statsClicked()">Stats</ion-button>
+      <ion-button (click)="usersClicked()">Users</ion-button>
+      <ion-button (click)="servicesClicked()">Services</ion-button>
+      <ion-button (click)="paymentClicked()">Payment Information</ion-button>
+      <ion-button (click)="templatesClicked()">Templates</ion-button>
+      <ion-button (click)="outreachClicked()">Outreach</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card>
+    <ion-card-title>All Seekers</ion-card-title>
+    <ion-grid>
+      <ion-row *ngIf="allSeekers">
+        <ion-label>Number of Seekers:{{allSeekers.length}}</ion-label>
+        <ion-label>Number of Active Seekers: 2</ion-label>
+        <ion-label>Number of Deleted Seekers: 1</ion-label>
+        <ion-label>New Users Today: 0</ion-label>
+      </ion-row>
+    </ion-grid>
+    <ion-card-content>
+      <ion-list *ngFor="let seeker of allSeekers">
+        <ion-item>
+          <ion-label>{{seeker.firstName}}</ion-label>
+          <ion-label>{{seeker.lastName}}</ion-label>
+          <ion-label>{{seeker.city}}</ion-label>
+          <ion-label>{{seeker.address}}</ion-label>
+          <ion-label>{{seeker.postalCode}}</ion-label>
+          <ion-label>{{seeker.email}}</ion-label>
+          <ion-label>{{seeker.phoneNumber}}</ion-label>
+          <ion-buttons>
+            <ion-button (click)="seeProfileModal()">
+              See Profile
+            </ion-button>
+          </ion-buttons>
+        </ion-item>
+      </ion-list>
+      <ion-button color="success" (click)="newSeekerModal()"
+        >Add Seeker</ion-button
+      >
+      <ion-button (click)="refresh()">Refresh</ion-button>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card>
+    <ion-card-title>All Providers</ion-card-title>
+    <ion-card-content>
+      <ion-grid>
+        <ion-row *ngIf="allProviders">
+          <ion-label>Number of Providers: {{allProviders.length}}</ion-label>
+          <ion-label>Number of Active Providers: 2</ion-label>
+          <ion-label>Number of Deleted Providers: 1</ion-label>
+          <ion-label>New Users Today: 0</ion-label>
+        </ion-row>
+      </ion-grid>
+      <ion-list *ngFor="let provider of allProviders">
+        <ion-item>
+          <ion-label>{{provider.firstName}}</ion-label>
+          <ion-label>{{provider.lastName}}</ion-label>
+          <ion-label>{{provider.city}}</ion-label>
+          <ion-label>{{provider.primarySkill}}</ion-label>
+          <ion-label>{{provider.secondarySkill}}</ion-label>
+          <ion-label>{{provider.email}}</ion-label>
+          <ion-label>{{provider.phoneNumber}}</ion-label>
+          <ion-buttons>
+            <ion-button (click)="seeProfileModal()">
+              See Profile
+            </ion-button>
+          </ion-buttons>
+        </ion-item>
+      </ion-list>
+      <ion-button color="success" (click)="newProviderModal()"
+        >Add Provider</ion-button
+      >
+      <ion-button (click)="refresh()">Refresh</ion-button>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card>
+    <ion-card-title>Admins</ion-card-title>
+    <ion-card-content>
+      <ion-list *ngFor="let admin of allAdmins">
+        <ion-item>
+          <ion-label>{{admin.firstName}}</ion-label>
+          <ion-label>{{admin.lastName}}</ion-label>
+          <ion-label>{{admin.email}}</ion-label>
+          <ion-label>{{admin.phoneNumber}}</ion-label>
+
+          <ion-buttons>
+            <ion-button (click)="seeProfileModal()">
+              See Profile
+            </ion-button>
+          </ion-buttons>
+        </ion-item>
+      </ion-list>
+    </ion-card-content>
+
+    <ion-card-title>Sub Admins</ion-card-title>
+    <ion-card-content>
+      <ion-list *ngFor="let admin of allAdmins">
+        <ion-item>
+          <ion-label>{{admin.firstName}}</ion-label>
+          <ion-label>{{admin.lastName}}</ion-label>
+          <ion-label>{{admin.email}}</ion-label>
+          <ion-label>{{admin.phoneNumber}}</ion-label>
+          <ion-buttons>
+            <ion-button (click)="seeProfileModal()">
+              See Profile
+            </ion-button>
+          </ion-buttons>
+        </ion-item>
+      </ion-list>
+    </ion-card-content>
+  </ion-card>
+
+  <div id="footer">
+    <ion-grid>
+      <ion-row>
+        <ion-col id="footerTitles">
+          Find Out More
+        </ion-col>
+        <ion-col id="footerTitles">
+          Policies
+        </ion-col>
+        <ion-col id="footerTitles">
+          Connect
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col>
+          <button (click)="openFaq()" id="btnWhite">FAQ</button>
+        </ion-col>
+        <ion-col>
+          <button (click)="openTerms()" id="btnWhite">Terms of Service</button>
+        </ion-col>
+        <ion-col>
+          <button class="social-signin facebook">Connect with Facebook</button>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col>
+          <button (click)="openJob()" id="btnWhite">Post a Job</button>
+        </ion-col>
+        <ion-col>
+          <button id="btnWhite">Privacy Policy</button>
+        </ion-col>
+        <ion-col>
+          <button class="social-signin twitter">Connect with Twitter</button>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col>
+          <button (click)="openContactUs()" id="btnWhite">Contact Us</button>
+        </ion-col>
+        <ion-col>
+          <button id="btnWhite">Our Promise</button>
+        </ion-col>
+        <ion-col>
+          <button class="social-signin google">Connect with Google+</button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+</ion-content>

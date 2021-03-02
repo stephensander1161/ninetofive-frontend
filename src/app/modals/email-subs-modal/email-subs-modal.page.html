@@ -1,0 +1,51 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>Send out an Email</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form [formGroup]="emailSubsForm" (ngSubmit)="logForm()">
+    <ion-card>
+      <ion-card-header>To All Subscribers</ion-card-header>
+      <ion-item>
+        <ion-label>Subject:</ion-label>
+        <ion-input type="text" formControlName="subject"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label>Body:</ion-label>
+        <ion-input type="text" formControlName="body"></ion-input>
+      </ion-item>
+      <ion-button>Import Template</ion-button>
+      <ion-button id="button" type="submit" [disabled]="!emailSubsForm.valid"
+        >Send</ion-button
+      >
+    </ion-card>
+  </form>
+
+  <form [formGroup]="emailUserForm" (ngSubmit)="logForm()">
+    <ion-card>
+      <ion-card-header>To Individual User</ion-card-header>
+      <ion-item>
+        <ion-label position="floating">Email User</ion-label>
+        <ion-select interface="popover">
+          <ion-select-option *ngFor="let user of allUsers"
+            >{{user.email}}</ion-select-option
+          >
+        </ion-select>
+      </ion-item>
+      <ion-item>
+        <ion-label>Subject:</ion-label>
+        <ion-input type="text" formControlName="subject"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label>Body:</ion-label>
+        <ion-input type="text" formControlName="body"></ion-input>
+      </ion-item>
+      <ion-button>Import Template</ion-button>
+      <ion-button id="button" type="submit" [disabled]="!emailSubsForm.valid"
+        >Send</ion-button
+      >
+    </ion-card>
+  </form>
+</ion-content>

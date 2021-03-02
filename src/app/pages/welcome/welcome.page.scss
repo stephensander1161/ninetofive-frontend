@@ -1,0 +1,240 @@
+#jobsList {
+  box-shadow: 5px 10px;
+  border-style: outset;
+  border-radius: 10px;
+}
+
+.firstColor {
+  background-color: #279156;
+}
+
+.whiteFont {
+  color: white;
+}
+
+.greyColor {
+  background-color: #f5f5f5;
+}
+
+ion-card-content {
+  color: black;
+}
+
+#faqButton {
+  margin-left: 10px;
+}
+
+#testimonialButton {
+  margin: 15px;
+}
+
+#testimonial {
+  border-radius: 50%;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  padding: 5px;
+  width: 150px;
+}
+
+.thirdColor {
+  background-color: #61ce8b;
+}
+
+.hiwItem {
+  text-overflow: inherit;
+  white-space: normal;
+  font-size: large;
+  color: white;
+}
+
+#guarantee {
+  margin-bottom: 25px;
+}
+
+#testimonial:hover {
+  box-shadow: 0 0 2px 1px rgba(0, 140, 186, 0.5);
+}
+
+#icons {
+  padding: 50px;
+  margin-left: 30px;
+  margin-right: 30px;
+}
+
+#signup {
+  margin-left: 400px;
+}
+
+.splash-bg {
+  position: relative;
+  background: url("../../../assets/img/logoblack.jpg");
+  background-size: contain;
+  height: 45%;
+  z-index: 1;
+  background-repeat: repeat-x;
+  animation: animatedBackground 40s linear infinite;
+}
+
+@keyframes animatedBackground {
+  from {
+    background-position: 0 0;
+  }
+  to {
+    background-position: 100% 0;
+  }
+}
+
+.splash-info {
+  position: relative;
+  z-index: 2;
+  margin-top: -64px;
+  text-align: center;
+}
+.splash-logo {
+  margin: auto;
+  background-size: 100%;
+  width: 128px;
+  height: 128px;
+}
+.splash-intro {
+  font-size: 18px;
+  font-weight: bold;
+  max-width: 80%;
+  margin: auto;
+}
+#btnContainer {
+  margin-left: 450px;
+  padding: 50px;
+}
+
+button.login {
+  margin-top: 25px;
+  background-color: white;
+  box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.2);
+  color: #333;
+
+  &.activated {
+    background-color: rgb(220, 220, 220);
+  }
+}
+
+#footer {
+  margin-top: 100px;
+}
+
+ion-card {
+  padding: 20px;
+  margin-bottom: 50px;
+}
+
+#header {
+  margin-top: 200px;
+}
+
+.adminButton {
+  margin-left: 35px;
+}
+
+ion-slides {
+  padding: 25px;
+}
+
+#slideImage {
+  height: 400px;
+  width: 600px;
+  border-radius: 50px;
+}
+
+.editBtn {
+  margin-right: 20px;
+}
+
+.profiles {
+  width: 20%;
+  height: auto;
+  border: black;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  padding: 5px;
+}
+
+.profiles:hover {
+  box-shadow: 0 0 2px 1px rgba(0, 140, 186, 0.5);
+}
+
+.highlight {
+  width: 40%;
+  height: auto;
+  margin-right: 50px;
+}
+
+ion-text {
+  font-size: medium;
+}
+
+ion-card-content {
+  font-size: 140%;
+}
+
+ion-title {
+  font-size: large;
+}
+
+#custTitle {
+  margin-top: 45px;
+  margin-bottom: 5px;
+  font-size: 200%;
+  text-align: center;
+}
+
+#highlightTitle {
+  margin-top: 35px;
+  font-size: 200%;
+  margin-bottom: 35px;
+  text-align: center;
+}
+
+.brothersPic {
+  height: 400px;
+  width: 400px;
+}
+
+.howItWorkList {
+  padding: 20px;
+  color: white;
+  font-size: 25px;
+}
+
+.aboutList {
+  position: relative;
+  color: white;
+  font-size: 20px;
+  width: 900px;
+}
+
+ion-button {
+  color: white;
+}
+
+.thirdColor {
+  background-color: #61ce8b;
+}
+
+.spacer {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+#moreAboutTitle {
+  font-size: 30px;
+}
+
+#howItWorksTitle {
+  margin-top: 350px;
+  font-size: 30px;
+}
+
+#guaranteeTitle {
+  margin-top: 350px;
+  font-size: 30px;
+}

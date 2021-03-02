@@ -1,0 +1,171 @@
+<ion-app>
+  <ion-toolbar>
+    <ion-grid>
+      <ion-row>
+        <ion-col>
+          <ion-select placeholder="English" interface="popover">
+            <ion-select-option>English</ion-select-option>
+            <ion-select-option>Francais</ion-select-option>
+            <ion-select-option>Espanol</ion-select-option>
+            <ion-select-option>Tagalog</ion-select-option>
+            <ion-select-option>Punjabi</ion-select-option>
+            <ion-select-option>Cantonese</ion-select-option>
+            <ion-select-option>Mandarin</ion-select-option>
+          </ion-select>
+          {{ currentTime | date: "MMM d, h:mm " }}
+        </ion-col>
+        <ion-col></ion-col>
+
+        <ion-col>
+          <ion-img
+            (click)="titleClicked()"
+            id="title"
+            src="assets/img/logowhite.jpg"
+          >
+          </ion-img>
+        </ion-col>
+
+        <ion-col> </ion-col>
+
+        <ion-col>
+          <img id="tree" src="assets/img/tree.jpg" />
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+
+    <ion-grid id="menu">
+      <ion-row>
+        <ion-col>
+          <ion-title (click)="postJobClicked()">Post a Job</ion-title>
+        </ion-col>
+        <ion-col>
+          <ion-title
+            (click)="_welcomeClicked = !_welcomeClicked"
+            [class.welcomeClass]="_welcomeClicked"
+            (click)="welcomeClicked()"
+            >Welcome</ion-title
+          >
+        </ion-col>
+
+        <ion-col>
+          <ion-title (click)="loginClicked()" *ngIf="!_authService.loggedIn()"
+            >Login</ion-title
+          >
+
+          <ion-title
+            (click)="_authService.logoutUser()"
+            *ngIf="_authService.loggedIn()"
+            >Logout</ion-title
+          >
+        </ion-col>
+        <ion-col>
+          <ion-title (click)="signupClicked()" *ngIf="!_authService.loggedIn()"
+            >Sign Up</ion-title
+          >
+          <ion-title (click)="homeClicked()" *ngIf="_authService.loggedIn()"
+            >Home</ion-title
+          >
+        </ion-col>
+
+        <ion-col>
+          <ion-title (click)="contactUsClicked()">Contact Us</ion-title>
+        </ion-col>
+
+        <ion-col>
+          <ion-title
+            (click)="adminDashboardClicked()"
+            *ngIf="_authService.loggedIn()"
+            >Admin Dashboard</ion-title
+          >
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+
+    <ion-buttons slot="start">
+      <ion-menu-button autoHide="false"></ion-menu-button>
+    </ion-buttons>
+  </ion-toolbar>
+
+  <ion-menu contentId="main-content" type="overlay" menuId="first">
+    <ion-content color="light">
+      <ion-list id="main-menu">
+        <ion-list-header>9ine to 5ive</ion-list-header>
+        <ion-note>Work With Us!</ion-note>
+        <div *ngIf="_authService.loggedIn()">
+          <ion-menu-toggle
+            auto-hide="false"
+            *ngFor="let h of homePage; let i = index"
+          >
+            <ion-item
+              (click)="selectedIndex = i"
+              routerDirection="forward"
+              [routerLink]="[h.url]"
+              lines="none"
+              detail="false"
+              [class.selected]="selectedIndex == i"
+            >
+              <ion-icon
+                slot="start"
+                [ios]="h.icon + '-outline'"
+                [md]="h.icon + '-sharp'"
+              ></ion-icon>
+              <ion-label>{{ h.title }}</ion-label>
+            </ion-item>
+          </ion-menu-toggle>
+        </div>
+        <ion-menu-toggle
+          menu="first"
+          auto-hide="false"
+          *ngFor="let p of appPages; let i = index"
+        >
+          <ion-item
+            (click)="selectedIndex = i"
+            routerDirection="forward"
+            [routerLink]="[p.url]"
+            lines="none"
+            detail="false"
+            [class.selected]="selectedIndex == i"
+          >
+            <ion-icon
+              slot="start"
+              [ios]="p.icon + '-outline'"
+              [md]="p.icon + '-sharp'"
+            ></ion-icon>
+            <ion-label>{{ p.title }}</ion-label>
+          </ion-item>
+        </ion-menu-toggle>
+        <div *ngIf="_authService.loggedIn()">
+          <ion-list-header>Admin Pages</ion-list-header>
+          <ion-menu-toggle
+            auto-hide="false"
+            *ngFor="let a of adminPages; let i = index"
+          >
+            <ion-item
+              (click)="selectedIndex = i"
+              routerDirection="forward"
+              [routerLink]="[a.url]"
+              lines="none"
+              detail="false"
+              [class.selected]="selectedIndex == i"
+            >
+              <ion-icon
+                slot="start"
+                [ios]="a.icon + '-outline'"
+                [md]="a.icon + '-sharp'"
+              ></ion-icon>
+              <ion-label>{{ a.title }}</ion-label>
+            </ion-item>
+          </ion-menu-toggle>
+        </div>
+      </ion-list>
+    </ion-content>
+  </ion-menu>
+  <ion-router-outlet id="main-content"></ion-router-outlet>
+
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button>
+      <ion-icon color="success" name="chatbox"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+  <br />
+</ion-app>

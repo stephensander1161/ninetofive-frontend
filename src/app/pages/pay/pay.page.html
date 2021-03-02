@@ -1,0 +1,252 @@
+<ion-header> </ion-header>
+<link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+/>
+<ion-content>
+  <ion-card-title id="title">Pay Your Provider</ion-card-title>
+
+  <form id="paymentForm" [formGroup]="seekerPayForm" (ngSubmit)="logForm()">
+    <ion-card>
+      <ion-grid>
+        <ion-row>
+          <ion-item>
+            <ion-label position="floating">Select Provider</ion-label>
+            <ion-select id="selectProvider">
+              <ion-select-option
+                id="selectProvider"
+                *ngFor="let provider of allProviders"
+                >{{provider.firstName}} {{provider.lastName}}</ion-select-option
+              >
+            </ion-select>
+          </ion-item>
+        </ion-row>
+        <ion-row>
+          <ion-col>
+            <h3>Billing Address</h3>
+          </ion-col>
+
+          <ion-col>
+            <h3>Payment</h3>
+          </ion-col>
+        </ion-row>
+
+        <ion-row>
+          <ion-col>
+            <ion-label for="fname"
+              ><i class="fa fa-user"></i> Full Name</ion-label
+            >
+            <ion-input
+              formControlName="fullName"
+              type="text"
+              placeholder="John M. Doe"
+            ></ion-input>
+          </ion-col>
+
+          <ion-col>
+            <ion-label for="fname">Accepted Cards</ion-label>
+            <i class="fa fa-cc-visa" style="color: navy;"></i>
+            <i class="fa fa-cc-amex" style="color: blue;"></i>
+            <i class="fa fa-cc-mastercard" style="color: red;"></i>
+            <i class="fa fa-cc-discover" style="color: orange;"></i>
+
+            <ion-input
+              formControlName="promoCode"
+              type="text"
+              placeholder="Promo Code"
+            ></ion-input>
+          </ion-col>
+        </ion-row>
+
+        <ion-row>
+          <ion-col>
+            <ion-label for="email"
+              ><i class="fa fa-envelope"></i> Email</ion-label
+            >
+            <ion-input
+              formControlName="email"
+              type="text"
+              placeholder="john@example.com"
+            ></ion-input>
+          </ion-col>
+
+          <ion-col>
+            <ion-label>Name on Card</ion-label>
+            <ion-input
+              formControlName="nameOnCard"
+              type="text"
+              placeholder="John More Doe"
+            ></ion-input>
+          </ion-col>
+        </ion-row>
+
+        <ion-row>
+          <ion-col>
+            <ion-label> Address</ion-label>
+            <ion-input
+              type="text"
+              formControlName="address"
+              placeholder="542 W. 15th Street"
+            ></ion-input>
+          </ion-col>
+
+          <ion-col>
+            <ion-label>Credit card number</ion-label>
+            <ion-input
+              formControlName="cardNumber"
+              type="text"
+              placeholder="1111-2222-3333-4444"
+            ></ion-input>
+          </ion-col>
+        </ion-row>
+
+        <ion-row>
+          <ion-col>
+            <ion-label> City</ion-label>
+            <ion-input
+              type="text"
+              formControlName="city"
+              placeholder="Calgary"
+            ></ion-input>
+          </ion-col>
+
+          <ion-col>
+            <ion-label>Exp Month</ion-label>
+            <ion-input
+              formControlName="expMonth"
+              type="text"
+              placeholder="September"
+            ></ion-input>
+          </ion-col>
+        </ion-row>
+
+        <ion-row>
+          <ion-col>
+            <ion-label>Province</ion-label>
+            <ion-select
+              formControlName="province"
+              placeholder="Select One"
+              class="selectBlack"
+            >
+              <ion-select-option value="f">BC</ion-select-option>
+              <ion-select-option value="m">AB</ion-select-option>
+              <ion-select-option value="f">SK</ion-select-option>
+              <ion-select-option value="m">MB</ion-select-option>
+              <ion-select-option value="f">ON</ion-select-option>
+              <ion-select-option value="m">QC</ion-select-option>
+              <ion-select-option value="f">NS</ion-select-option>
+              <ion-select-option value="m">NL</ion-select-option>
+              <ion-select-option value="f">PE</ion-select-option>
+              <ion-select-option value="m">NB</ion-select-option>
+              <ion-select-option value="f">NT</ion-select-option>
+              <ion-select-option value="m">YT</ion-select-option>
+              <ion-select-option value="f">NU</ion-select-option>
+            </ion-select>
+          </ion-col>
+
+          <ion-col>
+            <ion-label>Exp Year</ion-label>
+            <ion-input
+              type="text"
+              formControlName="expYear"
+              placeholder="2018"
+            ></ion-input>
+          </ion-col>
+        </ion-row>
+
+        <ion-row>
+          <ion-col>
+            <ion-label>Postal Code</ion-label>
+            <ion-input
+              type="text"
+              formControlName="postalCode"
+              placeholder="T9M1A1"
+            ></ion-input>
+          </ion-col>
+
+          <ion-col>
+            <ion-label>CVV</ion-label>
+            <ion-input
+              formControlName="cvv"
+              type="text"
+              placeholder="352"
+            ></ion-input>
+          </ion-col>
+        </ion-row>
+
+        <ion-row>
+          <ion-col>
+            <ion-checkbox> </ion-checkbox
+            ><ion-label id="sameAsBilling"
+              >Shipping address same as billing</ion-label
+            >
+          </ion-col>
+
+          <ion-col> </ion-col>
+        </ion-row>
+
+        <ion-button
+          type="submit"
+          color="success"
+          [disabled]="!seekerPayForm.valid"
+          expand="block"
+          (click)="confirmClicked()"
+        >
+          Confirm</ion-button
+        >
+      </ion-grid>
+    </ion-card>
+  </form>
+
+  <div id="footer">
+    <ion-grid>
+      <ion-row>
+        <ion-col id="footerTitles">
+          Find Out More
+        </ion-col>
+        <ion-col id="footerTitles">
+          Policies
+        </ion-col>
+        <ion-col id="footerTitles">
+          Connect
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col>
+          <button (click)="openFaq()" id="btnWhite">FAQ</button>
+        </ion-col>
+        <ion-col>
+          <button (click)="openTerms()" id="btnWhite">Terms of Service</button>
+        </ion-col>
+        <ion-col>
+          <button class="social-signin facebook">Connect with Facebook</button>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col>
+          <button (click)="openJob()" id="btnWhite">Post a Job</button>
+        </ion-col>
+        <ion-col>
+          <button id="btnWhite">Privacy Policy</button>
+        </ion-col>
+        <ion-col>
+          <button class="social-signin twitter">Connect with Twitter</button>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col>
+          <button (click)="openContactUs()" id="btnWhite">Contact Us</button>
+        </ion-col>
+        <ion-col>
+          <button id="btnWhite">Our Promise</button>
+        </ion-col>
+        <ion-col>
+          <button class="social-signin google">Connect with Google+</button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+</ion-content>
